@@ -1,0 +1,82 @@
+<resources>
+    <string name="app_name">Utime</string>
+
+    <string name="navigation_drawer_open">Open navigation drawer</string>
+    <string name="navigation_drawer_close">Close navigation drawer</string>
+
+    <string name="action_settings">Settings</string>
+    <!--主界面MainActivity Start-->
+    <!--统计-->
+    <string name="tb_stats"> Stats</string>
+    <string name="tb_scenemode">Scene Mode</string>
+    <!--排行-->
+    <string name="tb_rank">Top Charts</string>
+    <string name="str_statics_send">Send: 15MB</string>
+    <string name="str_statics_recive">Recive: 125KB</string>
+    <string name="title_back">Back</string>
+    <string name="title_statics">Statics</string>
+    <string name="str_ranktype_hot">Hot</string>
+    <string name="str_ranktype_time">Time</string>
+    <string name="str_ranktype_frequency">Frequency</string>
+    <string name="str_scene_whitelist">WHITE LIST</string>
+    <string name="str_title_whitelist">White List</string>
+    <string name="str_scene_whitelist_des">Not restricted to use</string>
+    <string name="transition_utime_login">utime login</string>
+    <string name="utime_login_failed">login failed</string>
+    <string name="str_new_scenemodel_starttime">StartTime</string>
+    <string name="str_newscenemode_endtiem">EndTime</string>
+    <string name="str_newscenemode_repeat">Repeat</string>
+    <string name="str_newscenemode_tone">Tone</string>
+    <string name="str_newscenemode_vol">Vol.</string>
+    <string name="str_newscenemode_snooze">Snooze</string>
+    <string name="str_scenemode_name">Scene Name</string>
+    <string name="str_prohibitmode_name">Prohibit Name</string>
+    <string name="str_mode_name">Mode</string>
+    <string name="str_dialog_title_createmode">Create Mode</string>
+    <string name="str_title_newscenemode">New Scene Mode</string>
+    <string name="str_next">Next</string>
+    <string name="str_snooze_time_0">Dismiss</string>
+    <string name="str_unit_mins">mins</string>
+    <string name="str_title_editscene">Setting Scene Name</string>
+    <string name="str_sure">Sure</string>
+    <string name="mode_whiteapp_des">The selected only  used during the time </string>
+    <string name="mode_whitleapp">Scene Mode</string>
+    <string name="mode_blackapp">Prohibit App</string>
+    <string name="mode_blackapp_des">The selected not used during the time</string>
+    <string name="str_input_scene_name">Input Scene Name</string>
+    <string name="str_input_prohibit_name">Input Prohibit Name</string>
+    <string name="str_select_start_time">Select StartTime</string>
+    <string name="str_select_end_time">Select EndTime</string>
+    <string name="str_dialog_cancel">cancel</string>
+    <string name="str_dialog_sure">sure</string>
+    <string name="app_usagestats">usagestats</string>
+    <string name="str_appstats_day">Day</string>
+    <string name="str_appstats_week">Week</string>
+    <string name="str_appstats_month">Mon</string>
+    <string name="str_title_appstats">App Stats</string>
+    <!--注意%1$d 表示一个参数，d表示整数，%1&s表示字符串，如果有第二个参数的话数字往上加，如%2$s-->
+    <string-array name="arr_str_repeat_time">
+        <item>5</item>
+        <item>10</item>
+        <item>15</item>
+        <item>30</item>
+    </string-array>
+    <string-array name="arr_str_repeat_week">
+        <item>Only Once</item>
+        <item>Mon</item>
+        <item>Tue</item>
+        <item>Wed</item>
+        <item>Thu</item>
+        <item>Fri</item>
+        <item>Sat</item>
+        <item>Sun</item>
+    </string-array>
+    <string-array name="arr_str_mode_name">
+        <item>@string/mode_whitleapp</item>
+        <item>@string/mode_blackapp</item>
+    </string-array>
+    <string-array name="arr_str_mode_des">
+        <item>@string/mode_whiteapp_des</item>
+        <item>@string/mode_blackapp_des</item>
+    </string-array>
+</resources>

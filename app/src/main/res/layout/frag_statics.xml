@@ -1,0 +1,177 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <include layout="@layout/title_back"></include>
+
+    <com.raythinks.utime.widget.FourThreePieChart
+        android:id="@+id/pc_time"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/white" />
+
+    <ImageView
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/dmCuttingLine"
+        android:background="@color/colorLine"></ImageView>
+
+    <ImageView
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/dmCuttingLine"
+        android:layout_marginTop="8dp"
+        android:background="@color/colorLine"></ImageView>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/white"
+        android:orientation="vertical">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <android.support.design.internal.ForegroundLinearLayout
+                android:id="@+id/fll_statics_call"
+                style="@style/style_stats_type_item">
+
+                <ImageView
+                    android:id="@+id/iv_stats_call"
+                    style="@style/style_stats_type_pic"
+                    android:src="@mipmap/ic_phone" />
+
+                <LinearLayout style="@style/style_stats_type_des">
+
+                    <TextView
+                        android:id="@+id/tv_stats_type_call"
+                        style="@style/style_stats_type_name"
+                        android:text="CALL" />
+
+                    <TextView
+                        android:id="@+id/tv_stats_type_call_des1"
+                        style="@style/style_stats_type_content1"
+                        android:text="OutGoing: 8" />
+
+                    <TextView
+                        android:id="@+id/tv_stats_type_call_des2"
+                        style="@style/style_stats_type_content2"
+                        android:text="InComing: 6" />
+                </LinearLayout>
+            </android.support.design.internal.ForegroundLinearLayout>
+
+            <ImageView
+                android:layout_width="0.6dp"
+                android:layout_height="83dp"
+                android:background="@color/colorLine"></ImageView>
+
+            <android.support.design.internal.ForegroundLinearLayout
+                android:id="@+id/fll_statics_traffic"
+                style="@style/style_stats_type_item">
+
+                <ImageView
+                    android:id="@+id/iv_stats_msg"
+                    style="@style/style_stats_type_pic"
+                    android:src="@mipmap/ic_traffic" />
+
+                <LinearLayout style="@style/style_stats_type_des">
+
+                    <TextView
+                        android:id="@+id/tv_stats_type_traffic"
+                        style="@style/style_stats_type_name"
+                        android:text="TRAFFIC" />
+
+                    <TextView
+                        android:id="@+id/tv_stats_type_traffic_des1"
+                        style="@style/style_stats_type_content1"
+                        android:text="@string/str_statics_send" />
+
+                    <TextView
+                        android:id="@+id/tv_stats_type_traffic_des2"
+                        style="@style/style_stats_type_content2"
+                        android:text="@string/str_statics_recive" />
+                </LinearLayout>
+            </android.support.design.internal.ForegroundLinearLayout>
+        </LinearLayout>
+
+        <ImageView
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/dmCuttingLine"
+            android:background="@color/colorLine"></ImageView>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <android.support.design.internal.ForegroundLinearLayout
+                android:id="@+id/fll_statics_msg"
+                style="@style/style_stats_type_item">
+
+                <ImageView
+                    android:id="@+id/iv_stats_app"
+                    style="@style/style_stats_type_pic"
+                    android:src="@mipmap/ic_message" />
+
+                <LinearLayout style="@style/style_stats_type_des">
+
+                    <TextView
+                        android:id="@+id/tv_stats_type_msg"
+                        style="@style/style_stats_type_name"
+                        android:text="MESSAGE" />
+
+                    <TextView
+                        android:id="@+id/tv_stats_type_msg_des1"
+                        style="@style/style_stats_type_content1"
+                        android:text="@string/str_statics_send" />
+
+                    <TextView
+                        android:id="@+id/tv_stats_type_msg_des2"
+                        style="@style/style_stats_type_content2"
+                        android:text="@string/str_statics_recive" />
+                </LinearLayout>
+            </android.support.design.internal.ForegroundLinearLayout>
+
+            <ImageView
+                android:layout_width="0.6dp"
+                android:layout_height="83dp"
+                android:background="@color/colorLine"></ImageView>
+
+            <android.support.design.internal.ForegroundLinearLayout
+                android:id="@+id/fll_statics_app"
+                style="@style/style_stats_type_item">
+
+                <ImageView
+                    android:id="@+id/iv_stats_traffic"
+                    style="@style/style_stats_type_pic"
+                    android:src="@mipmap/ic_app" />
+
+                <LinearLayout style="@style/style_stats_type_des">
+
+                    <TextView
+                        android:id="@+id/tv_stats_type_app"
+                        style="@style/style_stats_type_name"
+                        android:text="APP" />
+
+                    <TextView
+                        android:id="@+id/tv_stats_type_app_des1"
+                        style="@style/style_stats_type_content1"
+                        android:text="@string/str_statics_send" />
+
+                    <TextView
+                        android:id="@+id/tv_stats_type_app_des2"
+                        style="@style/style_stats_type_content2"
+                        android:text="@string/str_statics_recive" />
+                </LinearLayout>
+            </android.support.design.internal.ForegroundLinearLayout>
+        </LinearLayout>
+    </LinearLayout>
+
+    <ImageView
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/dmCuttingLine"
+        android:layout_marginBottom="70dp"
+        android:background="@color/colorLine"></ImageView>
+</LinearLayout>

@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.design.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:fitsSystemWindows="true"
+    tools:context="com.raythinks.utime.activity.MainActivity">
+
+    <FrameLayout
+        android:id="@+id/fl_main_center"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/colorBackground"
+        app:layout_behavior="@string/appbar_scrolling_view_behavior"></FrameLayout>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="bottom"
+        android:background="@android:color/white"
+        android:orientation="vertical"
+        app:layout_behavior="com.raythinks.utime.widget.FooterBehavior">
+
+        <View style="@style/style_vertical_line"></View>
+
+        <android.support.design.widget.TabLayout
+            android:id="@+id/main_bottom_tab"
+            style="@style/style_main_tab"
+            android:layout_width="match_parent"
+            android:layout_height="60dp"
+            android:background="@android:color/white"
+            app:tabIndicatorColor="@null" />
+    </LinearLayout>
+
+
+    <include layout="@layout/content_main" />
+</android.support.design.widget.CoordinatorLayout>

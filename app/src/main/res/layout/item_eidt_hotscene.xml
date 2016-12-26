@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<TextView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/tv_item"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:background="@drawable/shape_tags_selector"
+    android:gravity="center"
+    android:lines="1"
+    android:paddingBottom="@dimen/d5"
+    android:paddingLeft="@dimen/d8"
+    android:paddingRight="@dimen/d8"
+    android:paddingTop="@dimen/d5"
+    android:text="WeiBo"
+    android:textColor="@color/tv_tags_selector"
+    android:layout_margin="@dimen/d8"
+    android:textSize="@dimen/s12" />

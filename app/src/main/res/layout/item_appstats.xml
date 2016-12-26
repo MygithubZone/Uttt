@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:gravity="center_vertical"
+    android:orientation="horizontal"
+    android:paddingTop="@dimen/d12"
+    android:paddingBottom="@dimen/d12">
+
+    <TextView
+        android:id="@+id/tv_appstats_topnum"
+        android:layout_width="50dp"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:lines="1"
+        android:textColor="@color/c_666666"
+        android:textSize="@dimen/s18"
+        android:textStyle="italic"
+        tools:text="1" />
+
+    <ImageView
+        android:id="@+id/iv_appstats_icon"
+        android:layout_width="45dp"
+        android:layout_height="45dp"
+        android:src="@mipmap/test_icon" />
+
+    <LinearLayout
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="@dimen/d8"
+        android:layout_weight="1"
+        android:orientation="vertical">
+
+        <TextView
+            android:id="@+id/iv_appstats_appname"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:lines="1"
+            android:text="WeiBo"
+            android:textColor="@color/c_666666"
+            android:textSize="@dimen/s16" />
+
+        <com.akexorcist.roundcornerprogressbar.RoundCornerProgressBar
+            android:id="@+id/rpb_appstats_data"
+            android:layout_width="match_parent"
+            android:layout_height="12dp"
+            android:layout_gravity="center_vertical"
+            android:layout_marginTop="@dimen/d5"
+            app:rcBackgroundColor="@android:color/transparent"
+            app:rcBackgroundPadding="2dp"
+            app:rcMax="100"
+            app:rcProgress="50"
+            app:rcProgressColor="@color/colorPrimary"
+            app:rcRadius="8dp" />
+    </LinearLayout>
+
+    <TextView
+        android:id="@+id/tv_appstats_data"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="right|center_vertical"
+        android:layout_marginLeft="@dimen/d8"
+        android:ellipsize="end"
+        android:gravity="center"
+        android:lines="1"
+        android:text="15:00 55&apos;"
+        android:textColor="@color/colorPrimary"
+        android:layout_marginRight="@dimen/d12"
+        android:textSize="14sp" />
+</LinearLayout>

@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@android:color/transparent"
+    android:orientation="vertical">
+    <!--android:drawableTop="@drawable/tb_db"-->
+    <TextView
+        android:id="@+id/tv_tab_item"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@android:color/transparent"
+        android:drawablePadding="5dp"
+        android:drawableTop="@drawable/tb_db"
+        android:gravity="center_horizontal"
+        android:paddingBottom="@dimen/d8"
+        android:paddingTop="@dimen/d8"
+        android:text="@string/app_name"
+        android:textColor="@color/color_tab_text"
+        android:textSize="@dimen/s11" />
+</LinearLayout>

@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <RelativeLayout
+        style="@style/style_newscenemode_rv"
+        android:background="@color/white"
+        android:paddingBottom="@dimen/d12"
+        android:paddingTop="@dimen/d12">
+
+        <TextView
+            android:id="@+id/tv_select_name"
+            style="@style/stytle_newscenemode_tv_title" />
+
+        <TextView
+            android:id="@+id/tv_select_des"
+            style="@style/style_newscenemode_tv_content_one"
+            android:layout_below="@id/tv_select_name"
+            android:layout_marginRight="@dimen/d5"
+            android:layout_toLeftOf="@+id/iv_selected"
+            android:maxLines="2"
+            android:visibility="gone" />
+
+        <ImageView
+            android:id="@+id/iv_selected"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:layout_centerVertical="true"
+            android:src="@drawable/ic_check_pressed_selector" />
+    </RelativeLayout>
+</LinearLayout>

@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:onClick="dismiss"
+    tools:context="com.raythinks.utime.activity.LoginActivity">
+
+    <LinearLayout
+        android:id="@+id/container"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:layout_margin="@dimen/spacing_xlarge"
+        android:background="@drawable/dialog_background"
+        android:elevation="@dimen/z_fab"
+        android:orientation="vertical"
+        android:padding="@dimen/spacing_large"
+        android:paddingTop="@dimen/spacing_xlarge"
+        android:transitionName="@string/transition_utime_login">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Login in to Utime"
+            android:textSize="@dimen/s18"
+            android:textColor="@color/c_666666"
+            android:lines="1"
+            android:layout_gravity="center_horizontal|top"/>
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/d12">
+
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:padding="4dp"
+                android:src="@mipmap/ic_classic_qq" />
+
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:padding="4dp"
+                android:src="@mipmap/ic_classic_wechat" />
+
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:padding="4dp"
+                android:src="@mipmap/ic_classic_twitter" />
+
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:padding="4dp"
+                android:src="@mipmap/ic_classic_facebook" />
+
+        </LinearLayout>
+
+
+        <TextView
+            android:id="@+id/login_failed_message"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:text="@string/utime_login_failed"
+            android:textColor="@color/error"
+            android:visibility="gone" />
+
+        <include layout="@layout/loading" />
+
+    </LinearLayout>
+
+</FrameLayout>

@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    xmlns:zhy="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/colorBackground"
+    android:orientation="vertical"
+    tools:context=".activity.EditSceneActivity">
+
+    <include layout="@layout/title_back"></include>
+
+
+    <ImageView
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/dmCuttingLine"
+        android:layout_marginTop="@dimen/d8"
+        android:background="@color/colorLine" />
+
+    <EditText
+        android:id="@+id/et_scene_name"
+        android:layout_width="match_parent"
+        android:layout_height="45dp"
+        android:background="@color/white"
+        android:gravity="center_vertical"
+        android:hint="@string/str_input_scene_name"
+        android:imeOptions="actionNext"
+        android:inputType="text"
+        android:lines="1"
+        android:paddingLeft="@dimen/d12"
+        android:paddingRight="@dimen/d12"
+        android:textColor="@color/c_666666"
+        android:textColorHint="@color/c_999999"
+        android:textSize="@dimen/s14" />
+
+    <ImageView
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/dmCuttingLine"
+        android:background="@color/colorLine" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="@dimen/d12"
+        android:layout_marginTop="@dimen/d12"
+        android:background="@color/transparent"
+        android:gravity="center_vertical"
+        android:lines="1"
+        android:text="Hot Scene Mode"
+        android:textColor="@color/c_666666"
+        android:textSize="@dimen/s14" />
+
+
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/d8">
+
+        <com.zhy.view.flowlayout.TagFlowLayout
+            android:id="@+id/tfl_search_flowlayout"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@color/white"
+            android:padding="@dimen/d12"
+            zhy:max_select="1" />
+    </FrameLayout>
+</LinearLayout>

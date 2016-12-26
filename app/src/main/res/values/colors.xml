@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="colorPrimary">#009688</color>
+    <color name="colorPrimaryDark">#009688</color>
+    <color name="colorAccent">#009688</color>
+    <!--背景-->
+    <color name="colorBackground">#f8f8f8</color>
+    <!--分割线-->
+    <color name="colorLine">#efefef</color>
+    <color name="colorBlack30">#30000000</color>
+    <color name="white">#FFFFFF</color>
+    <color name="c_cf1321">#cf1321</color>
+    <color name="c_efefef">#cf1321</color>
+    <color name="c_999999">#999999</color>
+    <color name="c_666666">#666666</color>
+    <!--<integer-array  name="arr_color_statics">-->
+    <color name="c_4CC2DC">#4CC2DC</color>
+    <color name="c_4CB24C">#4CB24C</color>
+    <color name="c_FCAA04">#FCAA04</color>
+    <color name="c_FCD64C">#FCD64C</color>
+    <color name="c_ECBEBC">#ECBEBC</color>
+    <color name="background_light">#fafafa</color>
+    <color name="grey_300">#ffe0e0e0</color>
+    <color name="error">#ffdd2c00</color>
+    <color name="mrl_rippleColor">#999999</color>
+    <color name="rippleBackground">#ffffff</color>
+</resources>

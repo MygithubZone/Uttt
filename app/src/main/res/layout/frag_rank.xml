@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/colorBackground"
+    android:orientation="vertical">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/title_height"
+        android:background="@color/colorPrimary">
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="30dp"
+            android:layout_centerInParent="true"
+            android:background="@drawable/bg_corner_white_line_shape"
+            android:orientation="horizontal"
+            android:padding="0.5dp"
+            android:paddingLeft="1dp">
+
+            <TextView
+                android:id="@+id/tv_rank_hot"
+                android:layout_width="70dp"
+                android:layout_height="fill_parent"
+                android:background="@drawable/home_menu_selector_first"
+                android:gravity="center"
+                android:text="@string/str_ranktype_hot"
+                android:textColor="@color/tv_rank_menu_selector"
+                android:textSize="@dimen/s12" />
+
+            <View
+                android:layout_width="0.5dp"
+                android:layout_height="fill_parent"
+                android:background="@android:color/white" />
+
+            <TextView
+                android:id="@+id/tv_rank_time"
+                android:layout_width="70dp"
+                android:layout_height="fill_parent"
+                android:layout_marginBottom="0.5dp"
+                android:layout_marginTop="0.5dp"
+                android:background="@drawable/home_menu_selector_middle"
+                android:gravity="center"
+                android:text="@string/str_ranktype_time"
+                android:textColor="@color/tv_rank_menu_selector"
+                android:textSize="@dimen/s12" />
+
+            <View
+                android:layout_width="0.5dp"
+                android:layout_height="fill_parent"
+                android:background="@android:color/white" />
+
+            <TextView
+                android:id="@+id/tv_rank_frequency"
+                android:layout_width="70dp"
+                android:layout_height="fill_parent"
+                android:background="@drawable/home_menu_selector_last"
+                android:gravity="center"
+                android:text="@string/str_ranktype_frequency"
+                android:textColor="@color/tv_rank_menu_selector"
+                android:textSize="@dimen/s12" />
+        </LinearLayout>
+    </RelativeLayout>
+
+    <com.lcodecore.tkrefreshlayout.TwinklingRefreshLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        android:id="@+id/ttrfl_rank_refresh"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        app:tr_wave_height="180dp"
+        app:tr_head_height="100dp">
+        <android.support.v7.widget.RecyclerView
+            android:id="@+id/rc_rank_list"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent" />
+    </com.lcodecore.tkrefreshlayout.TwinklingRefreshLayout>
+</LinearLayout>

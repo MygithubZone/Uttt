@@ -1,0 +1,297 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/colorBackground"
+    android:orientation="vertical">
+
+    <include layout="@layout/title_back"></include>
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:fillViewport="true">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <ImageView
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/dmCuttingLine"
+                android:layout_marginTop="@dimen/d8"
+                android:background="@color/colorLine"></ImageView>
+
+
+            <RelativeLayout
+                android:id="@+id/rl_name"
+                style="@style/style_newscenemode_rv"
+                android:background="@color/white">
+
+                <TextView
+                    android:id="@+id/tv_scenename_title"
+                    style="@style/stytle_newscenemode_tv_title"
+                    android:text="@string/str_scenemode_name" />
+
+                <TextView
+                    android:id="@+id/tv_scene_name"
+                    style="@style/style_newscenemode_tv_content"
+                    android:layout_below="@id/tv_scenename_title"
+                    android:text="@string/str_input_scene_name" />
+
+                <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentRight="true"
+                    android:layout_centerVertical="true"
+                    android:src="@mipmap/ic_arrow_right" />
+            </RelativeLayout>
+
+            <ImageView
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/dmCuttingLine"
+                android:layout_marginTop="@dimen/d8"
+                android:background="@color/colorLine"
+                android:visibility="gone"></ImageView>
+
+            <RelativeLayout
+                android:id="@+id/rl_mode"
+                style="@style/style_newscenemode_rv"
+                android:background="@color/white"
+                android:visibility="gone">
+
+                <TextView
+                    android:id="@+id/tv_mode"
+                    style="@style/stytle_newscenemode_tv_title"
+                    android:text="@string/str_mode_name" />
+
+                <TextView
+                    android:id="@+id/tv_mode_name"
+                    style="@style/style_newscenemode_tv_content"
+                    android:layout_below="@id/tv_mode"
+                    android:text="@string/mode_whitleapp" />
+
+                <TextView
+                    android:id="@+id/tv_mode_des"
+                    style="@style/style_newscenemode_tv_content"
+                    android:layout_below="@id/tv_mode_name"
+                    android:text="@string/mode_whiteapp_des"
+                    android:textSize="12sp" />
+
+                <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentRight="true"
+                    android:layout_centerVertical="true"
+                    android:src="@mipmap/ic_arrow_down_normal" />
+            </RelativeLayout>
+
+            <ImageView
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/dmCuttingLine"
+                android:background="@color/colorLine"></ImageView>
+
+            <ImageView
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/dmCuttingLine"
+                android:layout_marginTop="@dimen/d8"
+                android:background="@color/colorLine"></ImageView>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@color/white"
+                android:orientation="vertical">
+
+
+                <RelativeLayout
+                    android:id="@+id/rl_starttime"
+                    style="@style/style_newscenemode_rv">
+
+                    <TextView
+                        android:id="@+id/tv_starttime_title"
+                        style="@style/stytle_newscenemode_tv_title"
+                        android:text="@string/str_new_scenemodel_starttime" />
+
+                    <TextView
+                        android:id="@+id/tv_scenemodel_starttime"
+                        style="@style/style_newscenemode_tv_content"
+                        android:layout_below="@id/tv_starttime_title"
+                        android:text="@string/str_select_start_time"/>
+
+                    <ImageView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentRight="true"
+                        android:layout_centerVertical="true"
+                        android:src="@mipmap/ic_arrow_down_normal" />
+                </RelativeLayout>
+
+                <ImageView
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/dmCuttingLine"
+                    android:background="@color/colorLine"></ImageView>
+
+                <RelativeLayout
+                    android:id="@+id/rl_endtime"
+                    style="@style/style_newscenemode_rv"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+
+                    <TextView
+                        android:id="@+id/tv_endtime_title"
+                        style="@style/stytle_newscenemode_tv_title"
+                        android:text="@string/str_newscenemode_endtiem" />
+
+                    <TextView
+                        android:id="@+id/tv_scenemodel_endtime"
+                        style="@style/style_newscenemode_tv_content"
+                        android:layout_below="@id/tv_endtime_title"
+                        android:text="@string/str_select_end_time" />
+
+                    <ImageView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentRight="true"
+                        android:layout_centerVertical="true"
+                        android:src="@mipmap/ic_arrow_down_normal" />
+                </RelativeLayout>
+            </LinearLayout>
+
+            <ImageView
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/dmCuttingLine"
+                android:background="@color/colorLine"></ImageView>
+                <ImageView
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/dmCuttingLine"
+                    android:layout_marginTop="@dimen/d8"
+                    android:background="@color/colorLine"></ImageView>
+
+                <RelativeLayout
+                    android:id="@+id/rl_repeat"
+                    style="@style/style_newscenemode_rv"
+                    android:background="@color/white">
+
+                    <TextView
+                        android:id="@+id/tv_repeat_title"
+                        style="@style/stytle_newscenemode_tv_title"
+                        android:text="@string/str_newscenemode_repeat" />
+
+                    <TextView
+                        android:id="@+id/tv_repeat_content"
+                        style="@style/style_newscenemode_tv_content"
+                        android:layout_below="@id/tv_repeat_title"
+                        android:text="Only once" />
+
+                    <ImageView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentRight="true"
+                        android:layout_centerVertical="true"
+                        android:src="@mipmap/ic_arrow_down_normal" />
+                </RelativeLayout>
+
+                <ImageView
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/dmCuttingLine"
+                    android:background="@color/colorLine"></ImageView>
+            <LinearLayout
+                android:id="@+id/ll_whiteset"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/d8"
+                android:background="@color/white"
+                android:orientation="vertical">
+
+                <ImageView
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/dmCuttingLine"
+                    android:background="@color/colorLine"></ImageView>
+
+
+                <RelativeLayout
+                    android:id="@+id/rl_snooze"
+                    style="@style/style_newscenemode_rv">
+
+                    <TextView
+                        android:id="@+id/tv_snooze_title"
+                        style="@style/stytle_newscenemode_tv_title"
+                        android:text="@string/str_newscenemode_snooze" />
+
+                    <TextView
+                        android:id="@+id/tv_snooze_content"
+                        style="@style/style_newscenemode_tv_content"
+                        android:layout_below="@id/tv_snooze_title"
+                        android:text="10 mins" />
+
+                    <ImageView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentRight="true"
+                        android:layout_centerVertical="true"
+                        android:src="@mipmap/ic_arrow_down_normal" />
+                </RelativeLayout>
+
+                <ImageView
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/dmCuttingLine"
+                    android:background="@color/colorLine"></ImageView>
+
+                <RelativeLayout
+                    android:id="@+id/rl_tone"
+                    style="@style/style_newscenemode_rv">
+
+                    <TextView
+                        android:id="@+id/tv_tone_title"
+                        style="@style/stytle_newscenemode_tv_title"
+                        android:text="@string/str_newscenemode_tone" />
+
+                    <TextView
+                        android:id="@+id/tv_tone_content"
+                        style="@style/style_newscenemode_tv_content"
+                        android:layout_below="@id/tv_tone_title"
+                        android:text="Piano" />
+
+                    <ImageView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentRight="true"
+                        android:layout_centerVertical="true"
+                        android:src="@mipmap/ic_arrow_down_normal" />
+                </RelativeLayout>
+
+                <ImageView
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/dmCuttingLine"
+                    android:background="@color/colorLine"></ImageView>
+
+                <RelativeLayout
+                    android:id="@+id/rl_vol"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@color/white"
+                    android:paddingBottom="@dimen/d16"
+                    android:paddingLeft="@dimen/d12"
+                    android:paddingTop="@dimen/d16">
+
+                    <TextView
+                        android:id="@+id/tv_vol_title"
+                        style="@style/stytle_newscenemode_tv_title"
+                        android:text="@string/str_newscenemode_vol" />
+
+                    <com.rey.material.widget.Slider
+                        android:id="@+id/sd_vol_content"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_centerVertical="true"
+                        android:layout_marginLeft="@dimen/d20"
+                        android:layout_toRightOf="@+id/tv_vol_title" />
+                </RelativeLayout>
+            </LinearLayout>
+
+
+        </LinearLayout>
+    </ScrollView>
+</LinearLayout>

@@ -1,0 +1,311 @@
+<?xml version="1.0" encoding="utf-8"?>
+<items version="2" >
+
+    <item
+        is-multidex="true"
+        jar="E:\ProjectFiles\OASVNlite\app\build\intermediates\exploded-aar\com.android.support\transition\25.0.1\jars\classes.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="25.0.1"
+        sha1="c1b6ab157e8e12cb08b9ee82bb5e3c5d22632eb3">
+        <dex dex="E:\ProjectFiles\OASVNlite\app\build\intermediates\transforms\dex\debug\folders\1000\10\com.android.support-transition-25.0.1_07b3e53489d7e2d1b65ebe419d55917843d34de3\classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="E:\ProjectFiles\OASVNlite\app\build\intermediates\exploded-aar\com.zhy\flowlayout-lib\1.0.3\jars\classes.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="25.0.1"
+        sha1="fdaede6c3d2da36ba042f9db05a60d303e04045f">
+        <dex dex="E:\ProjectFiles\OASVNlite\app\build\intermediates\transforms\dex\debug\folders\1000\10\com.zhy-flowlayout-lib-1.0.3_6672091ebe78385644f715c6e74f55623738267e\classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="E:\ProjectFiles\OASVNlite\app\build\intermediates\exploded-aar\com.coolerfall\android-app-daemon\1.2.0\jars\classes.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="25.0.1"
+        sha1="bf0feb490f1b53215a15094c519dcee5e0bed2a8">
+        <dex dex="E:\ProjectFiles\OASVNlite\app\build\intermediates\transforms\dex\debug\folders\1000\10\com.coolerfall-android-app-daemon-1.2.0_35f8c9fc5e77c414f64debe5bc78281e970096e7\classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="E:\ProjectFiles\OASVNlite\app\build\intermediates\exploded-aar\com.android.support\palette-v7\25.1.0\jars\classes.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="25.0.1"
+        sha1="6f68018b5ddc2493f5e5cecc5601c05d0539281a">
+        <dex dex="E:\ProjectFiles\OASVNlite\app\build\intermediates\transforms\dex\debug\folders\1000\10\com.android.support-palette-v7-25.1.0_ec248e1d06804ba0e97f8d276df52458812b681a\classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="E:\ProjectFiles\OASVNlite\app\build\intermediates\incremental-classes\debug\instant-run-bootstrap.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="25.0.1"
+        sha1="8cd92f00e06e4cd5e7957eb82eeb9f247d86ff19">
+        <dex dex="E:\ProjectFiles\OASVNlite\app\build\intermediates\transforms\dex\debug\folders\1000\10\instant-run-bootstrap_5d30e4f053d6716b2190e22ce1711cea8030a35c\classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="E:\ProjectFiles\OASVNlite\app\build\intermediates\exploded-aar\se.emilsjolander\stickylistheaders\2.7.0\jars\classes.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="25.0.1"
+        sha1="3bdf77dbe58e0ec53a0178de532372e7c00859b9">
+        <dex dex="E:\ProjectFiles\OASVNlite\app\build\intermediates\transforms\dex\debug\folders\1000\10\se.emilsjolander-stickylistheaders-2.7.0_53d0232edbc9515b3de8492fec781dd4cb1052a0\classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="C:\Users\赵海\.gradle\caches\modules-2\files-2.1\com.github.PhilJay\MPAndroidChart\v3.0.1\369f9aa48a629b4e92557b37326f42dc3de796e4\MPAndroidChart-v3.0.1.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="25.0.1"
+        sha1="369f9aa48a629b4e92557b37326f42dc3de796e4">
+        <dex dex="E:\ProjectFiles\OASVNlite\app\build\intermediates\transforms\dex\debug\folders\1000\10\MPAndroidChart-v3.0.1_80ee99736b31bdbb39507d9628dd5862041901f6\classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="D:\AndroidSDK\extras\android\m2repository\com\android\support\support-annotations\25.1.0\support-annotations-25.1.0.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="25.0.1"
+        sha1="64cb6b229a8bdfd907bc8dd46839a0053e4c018d">
+        <dex dex="E:\ProjectFiles\OASVNlite\app\build\intermediates\transforms\dex\debug\folders\1000\10\support-annotations-25.1.0_2846279fca1dfb66d05499be1393db77d5988d85\classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="E:\ProjectFiles\OASVNlite\app\build\intermediates\exploded-aar\com.android.support\animated-vector-drawable\25.0.1\jars\classes.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="25.0.1"
+        sha1="772bed2d992b67b9d0327f766cc95cd63031dcd3">
+        <dex dex="E:\ProjectFiles\OASVNlite\app\build\intermediates\transforms\dex\debug\folders\1000\10\com.android.support-animated-vector-drawable-25.0.1_1f92c206a2690c382cdc2a67ee124b4dee27f3d8\classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="E:\ProjectFiles\OASVNlite\app\build\intermediates\exploded-aar\com.android.support\support-core-ui\25.0.1\jars\classes.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="25.0.1"
+        sha1="bc7e99e8d0fc279a05aa91378530f467ad62d443">
+        <dex dex="E:\ProjectFiles\OASVNlite\app\build\intermediates\transforms\dex\debug\folders\1000\10\com.android.support-support-core-ui-25.0.1_34887700defb962c97b6308539198a73dc41d66d\classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="E:\ProjectFiles\OASVNlite\app\build\intermediates\exploded-aar\com.android.support\cardview-v7\23.4.0\jars\classes.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="25.0.1"
+        sha1="d9ecde39b460470e655de6e47c05573d2d5a8bfb">
+        <dex dex="E:\ProjectFiles\OASVNlite\app\build\intermediates\transforms\dex\debug\folders\1000\10\com.android.support-cardview-v7-23.4.0_aaffd0f632511526a27095dc6d96b68e19249681\classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="E:\ProjectFiles\OASVNlite\app\build\intermediates\exploded-aar\com.android.support\design\25.0.1\jars\classes.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="25.0.1"
+        sha1="3b236883e0df6002cabb01ce57d00a5b1e5de610">
+        <dex dex="E:\ProjectFiles\OASVNlite\app\build\intermediates\transforms\dex\debug\folders\1000\10\com.android.support-design-25.0.1_e137014179c9dcb67278a429f5d842e91f0bd8cb\classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="E:\ProjectFiles\OASVNlite\app\build\intermediates\exploded-aar\com.github.rey5137\material\1.2.4\jars\classes.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="25.0.1"
+        sha1="8419191d25f4105772fc16b55a005a270cb4d4c8">
+        <dex dex="E:\ProjectFiles\OASVNlite\app\build\intermediates\transforms\dex\debug\folders\1000\10\com.github.rey5137-material-1.2.4_8bc5d04d34bc7402704c8bf883e4f565562ccd79\classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="E:\ProjectFiles\OASVNlite\app\build\intermediates\exploded-aar\com.android.support\support-vector-drawable\25.0.1\jars\classes.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="25.0.1"
+        sha1="b24e1c688744078e1fa833ffadf696794761bbe5">
+        <dex dex="E:\ProjectFiles\OASVNlite\app\build\intermediates\transforms\dex\debug\folders\1000\10\com.android.support-support-vector-drawable-25.0.1_f14ae9459272349bb3cff5cd3e8eaaa25898b3a8\classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="E:\ProjectFiles\OASVNlite\app\build\intermediates\exploded-aar\com.github.niorgai\StatusBarCompat\2.1.1\jars\classes.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="25.0.1"
+        sha1="8e89c6e639d43ba3036026a508a86da1f4416a21">
+        <dex dex="E:\ProjectFiles\OASVNlite\app\build\intermediates\transforms\dex\debug\folders\1000\10\com.github.niorgai-StatusBarCompat-2.1.1_e29bf71668fe3b5c55e142dd4fa7f4d8c5781660\classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="E:\ProjectFiles\OASVNlite\app\build\intermediates\exploded-aar\com.android.support\support-fragment\25.0.1\jars\classes.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="25.0.1"
+        sha1="26c6eef571592c91f29e56fda0bac73321de0c92">
+        <dex dex="E:\ProjectFiles\OASVNlite\app\build\intermediates\transforms\dex\debug\folders\1000\10\com.android.support-support-fragment-25.0.1_1e017e535a9ba9535fd859d07ab4ecfee85b4811\classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="E:\ProjectFiles\OASVNlite\app\build\intermediates\exploded-aar\me.drakeet.materialdialog\library\1.3.1\jars\classes.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="25.0.1"
+        sha1="6e57fe155cea810fb2ba5fe9ffabcb197ecf81d1">
+        <dex dex="E:\ProjectFiles\OASVNlite\app\build\intermediates\transforms\dex\debug\folders\1000\10\me.drakeet.materialdialog-library-1.3.1_8b579137cd25619c2c65e465329b273589348276\classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="E:\ProjectFiles\OASVNlite\app\build\intermediates\exploded-aar\com.android.support\support-media-compat\25.0.1\jars\classes.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="25.0.1"
+        sha1="6a1479afe9f1b3645e1cd9a87318976893472818">
+        <dex dex="E:\ProjectFiles\OASVNlite\app\build\intermediates\transforms\dex\debug\folders\1000\10\com.android.support-support-media-compat-25.0.1_1399256dd30683a67b10f791e5605b7197468bcc\classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="C:\Users\赵海\.gradle\caches\modules-2\files-2.1\com.squareup.okhttp3\okhttp\3.4.2\ccde00f7ccc77af5a6d5752e2cb21f6d8998289f\okhttp-3.4.2.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="25.0.1"
+        sha1="ccde00f7ccc77af5a6d5752e2cb21f6d8998289f">
+        <dex dex="E:\ProjectFiles\OASVNlite\app\build\intermediates\transforms\dex\debug\folders\1000\10\okhttp-3.4.2_100f52047dc52cf7adfc04768dccd0204d1b18b3\classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="E:\ProjectFiles\OASVNlite\app\build\intermediates\exploded-aar\com.android.support\support-core-ui\25.0.1\jars\libs\internal_impl-25.0.1.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="25.0.1"
+        sha1="e5343c9d19cb19ff55f6b268c7f3fe8c9d224f6f">
+        <dex dex="E:\ProjectFiles\OASVNlite\app\build\intermediates\transforms\dex\debug\folders\1000\10\internal_impl-25.0.1_3d1a56666a829a15444deea912383109830a9fbb\classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="C:\Users\赵海\.gradle\caches\modules-2\files-2.1\com.squareup.okio\okio\1.9.0\f824591a0016efbaeddb8300bee54832a1398cfa\okio-1.9.0.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="25.0.1"
+        sha1="f824591a0016efbaeddb8300bee54832a1398cfa">
+        <dex dex="E:\ProjectFiles\OASVNlite\app\build\intermediates\transforms\dex\debug\folders\1000\10\okio-1.9.0_1fe500b2489a95bca11a05f454621c30a7a8379c\classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="E:\ProjectFiles\OASVNlite\app\build\intermediates\exploded-aar\com.lcodecorex\tkrefreshlayout\1.0.4\jars\classes.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="25.0.1"
+        sha1="ddfa3b26ad826d0d868160cf1ee4d58c60713983">
+        <dex dex="E:\ProjectFiles\OASVNlite\app\build\intermediates\transforms\dex\debug\folders\1000\10\com.lcodecorex-tkrefreshlayout-1.0.4_7538f997d99c95a9e382565993a2763ccf80675b\classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="E:\ProjectFiles\OASVNlite\app\build\intermediates\exploded-aar\com.wang.avi\library\1.0.1\jars\classes.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="25.0.1"
+        sha1="4968500e276d051b8ed8135f1a0254120f6c600d">
+        <dex dex="E:\ProjectFiles\OASVNlite\app\build\intermediates\transforms\dex\debug\folders\1000\10\com.wang.avi-library-1.0.1_d23e58170075e84238d64eda292a4fa39eb0a05c\classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="E:\ProjectFiles\OASVNlite\app\build\intermediates\exploded-aar\com.android.support\appcompat-v7\25.0.1\jars\classes.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="25.0.1"
+        sha1="f7ac4b327fdb9e2ee386f5adc46164927658de4b">
+        <dex dex="E:\ProjectFiles\OASVNlite\app\build\intermediates\transforms\dex\debug\folders\1000\10\com.android.support-appcompat-v7-25.0.1_da8e49599fe7f6db3a20dc80ca10c7d99e9d1457\classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="E:\ProjectFiles\OASVNlite\app\build\intermediates\exploded-aar\com.balysv\material-ripple\1.0.2\jars\classes.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="25.0.1"
+        sha1="c733e9d1b065d940a08f2fca0ff920dfc08d94cc">
+        <dex dex="E:\ProjectFiles\OASVNlite\app\build\intermediates\transforms\dex\debug\folders\1000\10\com.balysv-material-ripple-1.0.2_f35cbb5226ef5eea55f7afb67aa393b15fc29162\classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="E:\ProjectFiles\OASVNlite\app\build\intermediates\exploded-aar\com.android.support\support-media-compat\25.0.1\jars\libs\internal_impl-25.0.1.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="25.0.1"
+        sha1="f83b00041ecfba705603fec40363416c7de69719">
+        <dex dex="E:\ProjectFiles\OASVNlite\app\build\intermediates\transforms\dex\debug\folders\1000\10\internal_impl-25.0.1_d08515add51467499d0f85e9791cc4df08750c95\classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="E:\ProjectFiles\OASVNlite\app\build\intermediates\exploded-aar\com.android.support\support-v4\25.0.1\jars\classes.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="25.0.1"
+        sha1="d7c42c80f6509b9ea4db28ca7859ffae08ec5741">
+        <dex dex="E:\ProjectFiles\OASVNlite\app\build\intermediates\transforms\dex\debug\folders\1000\10\com.android.support-support-v4-25.0.1_98a4d7ab3e5d8f16f24591aeace946b6b11a5179\classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="E:\ProjectFiles\OASVNlite\app\build\intermediates\exploded-aar\com.android.support\recyclerview-v7\25.0.1\jars\classes.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="25.0.1"
+        sha1="297d4bcf6ed4e747a1bf7d0d094a2d911a8d3a8e">
+        <dex dex="E:\ProjectFiles\OASVNlite\app\build\intermediates\transforms\dex\debug\folders\1000\10\com.android.support-recyclerview-v7-25.0.1_374068e6cb61b99d9d6dec2ace6e08da94e2f06a\classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="E:\ProjectFiles\OASVNlite\app\build\intermediates\incremental-runtime-classes\debug\instant-run.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="25.0.1"
+        sha1="4d06afcec4a2c0b59e5366955e67dae39cf08821">
+        <dex dex="E:\ProjectFiles\OASVNlite\app\build\intermediates\transforms\dex\debug\folders\1000\10\instant-run_0123c6d82059e73eef97c285633f8e8f30bb0d84\classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="E:\ProjectFiles\OASVNlite\app\build\intermediates\exploded-aar\com.akexorcist\RoundCornerProgressBar\2.0.3\jars\classes.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="25.0.1"
+        sha1="88c6386ad8356b89487b43bcaae4827b1abe999c">
+        <dex dex="E:\ProjectFiles\OASVNlite\app\build\intermediates\transforms\dex\debug\folders\1000\10\com.akexorcist-RoundCornerProgressBar-2.0.3_00ab7d8e6aeea14fb44634fe61cef0d761250d05\classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="E:\ProjectFiles\OASVNlite\app\build\intermediates\exploded-aar\com.android.support\support-compat\25.1.0\jars\classes.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="25.0.1"
+        sha1="ca3c7aa31e2726a400a6e552b93cb9f63c9a1e6d">
+        <dex dex="E:\ProjectFiles\OASVNlite\app\build\intermediates\transforms\dex\debug\folders\1000\10\com.android.support-support-compat-25.1.0_7a25ef1892e3781941cf239516a5bc4cc7f3cc67\classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="E:\ProjectFiles\OASVNlite\app\build\intermediates\exploded-aar\com.android.support\support-core-utils\25.1.0\jars\classes.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="25.0.1"
+        sha1="0a0ef86b7fa568a52bf6214a0326ca1f1d618da7">
+        <dex dex="E:\ProjectFiles\OASVNlite\app\build\intermediates\transforms\dex\debug\folders\1000\10\com.android.support-support-core-utils-25.1.0_a9e3f6d6b61037a2f4b01626d73b469a52336f73\classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="C:\Users\赵海\.gradle\caches\modules-2\files-2.1\com.nineoldandroids\library\2.4.0\e9b63380f3a242dbdbf103a2355ad7e43bad17cb\library-2.4.0.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="25.0.1"
+        sha1="e9b63380f3a242dbdbf103a2355ad7e43bad17cb">
+        <dex dex="E:\ProjectFiles\OASVNlite\app\build\intermediates\transforms\dex\debug\folders\1000\10\library-2.4.0_c0fbb8717731542f81926596abea3ad699f5a3b1\classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="E:\ProjectFiles\OASVNlite\app\build\intermediates\exploded-aar\com.android.support\support-fragment\25.0.1\jars\libs\internal_impl-25.0.1.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="25.0.1"
+        sha1="c0bd6ffb002a85b5e7cad29f8558d1cc59539679">
+        <dex dex="E:\ProjectFiles\OASVNlite\app\build\intermediates\transforms\dex\debug\folders\1000\10\internal_impl-25.0.1_2fe6d6c2f495d311c5969d6e2101e8e65fc0fca6\classes.dex" />
+    </item>
+
+</items>
