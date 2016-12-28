@@ -13,7 +13,6 @@ public class ScreenUtils {
 	}
 	/**
 	 * 获取屏幕宽度
-	 * @param c
 	 * @return
 	 */
 	@SuppressWarnings("deprecation")
@@ -23,7 +22,6 @@ public class ScreenUtils {
 
 	/**
 	 * 获取屏幕高度
-	 * @param c
 	 * @return
 	 */
 	@SuppressWarnings("deprecation")

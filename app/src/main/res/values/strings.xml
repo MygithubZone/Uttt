@@ -11,8 +11,8 @@
     <string name="tb_scenemode">Scene Mode</string>
     <!--排行-->
     <string name="tb_rank">Top Charts</string>
-    <string name="str_statics_send">Send: 15MB</string>
-    <string name="str_statics_recive">Recive: 125KB</string>
+    <string name="str_statics_send">Send: </string>
+    <string name="str_statics_recive">Recive: </string>
     <string name="title_back">Back</string>
     <string name="title_statics">Statics</string>
     <string name="str_ranktype_hot">Hot</string>

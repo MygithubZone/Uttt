@@ -35,14 +35,7 @@ public class MirrApplication extends Application {
 	// 这两个变量很少使用，没必要全局静态，直接在使用的时候获取即可
 	public static int appVersionCode; // app版本号
 	public static String appVersionName; // app版本名字
-	
-	// 以下的全局变量也可以被替换
-	public static DayDBManager dayDBManager;
-//	public static WeekDBManager weekDBManager;
-//	public static MonthDBManager monthDBManager;
-	public static AppInfoProviderUtils mAppInfoProvider;
 	public static ActivityManager mActivityManager;
-
 	public static List<String> homeList;
 
 	public static MirrApplication getAppContext() {
@@ -61,10 +54,8 @@ public class MirrApplication extends Application {
 	private void init() {
 		MirrApplication.mAppContext = this;
 		MirrApplication.mSharedPreferences = PreferenceManager.getDefaultSharedPreferences(this);
-		dayDBManager = new DayDBManager(mAppContext);
 //		weekDBManager = new WeekDBManager(mAppContext);
 //		monthDBManager = new MonthDBManager(mAppContext);
-		mAppInfoProvider = new AppInfoProviderUtils(mAppContext);
 		mActivityManager = (ActivityManager) getSystemService(Context.ACTIVITY_SERVICE);
 		homeList = getHomes();
 	}

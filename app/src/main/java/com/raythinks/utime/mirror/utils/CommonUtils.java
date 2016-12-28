@@ -2,14 +2,19 @@ package com.raythinks.utime.mirror.utils;
 
 import android.content.Context;
 import android.content.Intent;
+import android.net.ConnectivityManager;
+import android.net.NetworkInfo;
 import android.os.Build;
 import android.provider.Settings;
 import android.telephony.TelephonyManager;
+import android.text.TextUtils;
 import android.util.Log;
 
 import com.raythinks.utime.R;
 import com.raythinks.utime.callable.IDialogOnClickCallable;
 import com.raythinks.utime.mirror.common.CommUtils;
+import com.raythinks.utime.mirror.db.DBHelper;
+import com.raythinks.utime.mirror.db.DayDBManager;
 import com.raythinks.utime.utils.DialogUtils;
 
 import java.text.SimpleDateFormat;
@@ -17,7 +22,10 @@ import java.util.Calendar;
 import java.util.Date;
 import java.util.GregorianCalendar;
 
+
 public class CommonUtils {
+    private static final String TAG = "CommonUtils";
+
     public static void startMirror(final Context context) {
         if (Build.VERSION.SDK_INT > 20) {
             if (CommUtils.isNoOption(context)) {
@@ -66,6 +74,18 @@ public class CommonUtils {
         SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");// 可以方便地修改日期格式
         String hehe = dateFormat.format(now);
         return hehe;
+    }
+
+    /**
+     * 获取当天日期
+     *
+     * @return
+     */
+    public static String getYesterdayData() {
+        Calendar cal = Calendar.getInstance();
+        cal.add(Calendar.DATE, -1);
+        String yesterday = new SimpleDateFormat("yyyy-MM-dd ").format(cal.getTime());
+        return yesterday;
     }
 
     /**
@@ -143,6 +163,59 @@ public class CommonUtils {
         TelephonyManager tm = (TelephonyManager) context
                 .getSystemService(Context.TELEPHONY_SERVICE);
         return tm.getDeviceId();
+    }
+
+    /**
+     * 清除缓存数据
+     *
+     * @param context
+     */
+    public static void clearStatsData(Context context) {
+        if (!TextUtils.equals(
+                PreferenceUtils.getPrefString(context, "dayTime", ""),
+                CommonUtils.getNowTime())) {
+            DayDBManager.getInstance(context.getApplicationContext())
+                    .newAllAppStats(DBHelper.DAY_ALLAPP_STATS);
+            PreferenceUtils.setPrefString(context, "dayTime",
+                    CommonUtils.getNowTime());
+            DayDBManager.getInstance(context.getApplicationContext()).insertTrafficApp(CommonUtils.getNetype(context.getApplicationContext()));
+            LogUtil.e(TAG, "updateUseTime 清空日数据");
+        }
+        if (!TextUtils.equals(
+                PreferenceUtils.getPrefString(context, "weekTime", ""),
+                CommonUtils.getCurrentWeekMonday())
+                && CommonUtils.getIsFristWeek() != 1) {
+            DayDBManager.getInstance(context.getApplicationContext())
+                    .newAllAppStats(DBHelper.WEEK_ALLAPP_STATS);
+            PreferenceUtils.setPrefString(context, "weekTime",
+                    CommonUtils.getCurrentWeekMonday());
+            LogUtil.e(TAG, "updateUseTime 清空周数据");
+        }
+        if (!TextUtils.equals(
+                PreferenceUtils.getPrefString(context, "monTime", ""),
+                CommonUtils.getFirstDayOfMonth())) {
+            DayDBManager.getInstance(context.getApplicationContext())
+                    .newAllAppStats(DBHelper.MONTH_ALLAPP_STATS);
+            PreferenceUtils.setPrefString(context, "monTime",
+                    CommonUtils.getFirstDayOfMonth());
+            LogUtil.e(TAG, "updateUseTime 清空月数据");
+        }
+    }
+
+    /**
+     * 获取网络状态
+     *
+     * @param context
+     * @return
+     */
+    public static int getNetype(Context context) {
+        ConnectivityManager mConnectivityManager = (ConnectivityManager) context.getSystemService(Context.CONNECTIVITY_SERVICE);
+        NetworkInfo netInfo = mConnectivityManager.getActiveNetworkInfo();
+        if (netInfo != null && netInfo.isAvailable()) {
+            return netInfo.getType();
+        } else {
+            return -1;
+        }
     }
 
     /**

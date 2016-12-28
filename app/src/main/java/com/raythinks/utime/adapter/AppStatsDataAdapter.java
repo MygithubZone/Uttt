@@ -2,18 +2,16 @@ package com.raythinks.utime.adapter;
 
 import android.content.Context;
 import android.content.pm.PackageManager;
-import android.media.Image;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
 import android.widget.ImageView;
-import android.widget.Switch;
 import android.widget.TextView;
 
 import com.akexorcist.roundcornerprogressbar.RoundCornerProgressBar;
 import com.raythinks.utime.R;
-import com.raythinks.utime.mirror.enty.AppUseStatics;
+import com.raythinks.utime.mirror.model.AppUseStaticsModel;
 import com.raythinks.utime.mirror.utils.CommonUtils;
 import com.raythinks.utime.mvp.contract.SceneModeContract;
 
@@ -29,7 +27,7 @@ import java.util.List;
 public class AppStatsDataAdapter extends BaseAdapter {
     Context context;
     SceneModeContract.Presenter presenter;
-    private List<AppUseStatics> data = new ArrayList<AppUseStatics>();
+    private List<AppUseStaticsModel> data = new ArrayList<AppUseStaticsModel>();
     public int currentOldPosi = -1;
     int total;
 
@@ -83,7 +81,7 @@ public class AppStatsDataAdapter extends BaseAdapter {
         return convertView;
     }
 
-    public void setData(List<AppUseStatics> data, int total) {
+    public void setData(List<AppUseStaticsModel> data, int total) {
         this.data = data;
         this.total = total;
         notifyDataSetChanged();

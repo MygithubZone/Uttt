@@ -3,6 +3,7 @@ package com.raythinks.utime.fragment;
 import android.content.Intent;
 import android.graphics.Color;
 import android.graphics.Typeface;
+import android.net.TrafficStats;
 import android.support.design.internal.ForegroundLinearLayout;
 import android.text.SpannableString;
 import android.text.style.ForegroundColorSpan;
@@ -27,6 +28,7 @@ import com.rayker.core.base.BaseFragment;
 import com.raythinks.utime.R;
 import com.raythinks.utime.activity.AppStatsActivity;
 import com.raythinks.utime.callable.IMeterialClickCallable;
+import com.raythinks.utime.mirror.utils.TrafficUtils;
 import com.raythinks.utime.mvp.contract.StaticsContract;
 import com.raythinks.utime.mvp.presenter.StaticsPresenterImpl;
 import com.raythinks.utime.utils.CommomUtils;
@@ -117,6 +119,9 @@ public class StaticsFragment extends BaseFragment implements StaticsContract.Vie
         tvTitleName.setText(R.string.tb_stats);
         CommomUtils.makeMeterial(fllStaticsApp, this);
         initChart();
+
+        tvStatsTypeTrafficDes1.setText(getResources().getString(R.string.str_statics_send) + TrafficUtils.formatMB(TrafficStats.getTotalTxBytes()));
+        tvStatsTypeTrafficDes2.setText(getResources().getString(R.string.str_statics_recive) + TrafficUtils.formatMB(TrafficStats.getTotalRxBytes()));
     }
 
     @Override
@@ -160,7 +165,6 @@ public class StaticsFragment extends BaseFragment implements StaticsContract.Vie
         mPc.setUsePercentValues(true);
         mPc.getDescription().setEnabled(false);
         mPc.setExtraOffsets(5, 10, 5, 5);
-
         mPc.setDragDecelerationFrictionCoef(0.95f);
 
         mPc.setCenterTextTypeface(mTfLight);
@@ -183,7 +187,7 @@ public class StaticsFragment extends BaseFragment implements StaticsContract.Vie
         mPc.setHighlightPerTapEnabled(true);
         // mPc.setUnit(" €");
         // mPc.setDrawUnitsInChart(true);
-        // add a selection listener
+        // addOrUpdate a selection listener
         mPc.setOnChartValueSelectedListener(this);
         setData(4, 100);
         mPc.animateY(1400, Easing.EasingOption.EaseInOutQuad);
@@ -220,7 +224,7 @@ public class StaticsFragment extends BaseFragment implements StaticsContract.Vie
         dataSet.setSelectionShift(5f);
         dataSet.setHighlightEnabled(true);
 //        dataSet.setSelectionShift(5f);
-        // add a lot of colors
+        // addOrUpdate a lot of colors
 
         ArrayList<Integer> colors = new ArrayList<Integer>();
 

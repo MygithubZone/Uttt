@@ -167,7 +167,7 @@ public class CalendarUtil {
         Calendar lastDate = Calendar.getInstance();
         lastDate.set(Calendar.DATE, 1);// 设为当前月的1号
         lastDate.add(Calendar.MONTH, -1);// 减一个月，变为下月的1号
-        // lastDate.add(Calendar.DATE,-1);//减去一天，变为当月最后一天
+        // lastDate.addOrUpdate(Calendar.DATE,-1);//减去一天，变为当月最后一天
 
         str = sdf.format(lastDate.getTime());
         return str;

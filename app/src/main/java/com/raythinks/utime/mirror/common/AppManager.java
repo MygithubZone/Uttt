@@ -58,11 +58,11 @@ public void onResultAct(Activity act,int requestCode, int resultCode, Intent dat
 				Toast.makeText(act, "取消卸载", 0).show();
 			} else if(resultCode == act.RESULT_OK){
 				// 卸载之后就将数据从数组中删除，同时将其从数据库中删除
-//				AppUseStatics removeObject = MirrApplication.mDBManager
-//						.queryByPkgName(clicked_item_pkgname);
+//				AppUseStaticsModel removeObject = MirrApplication.mDBManager
+//						.queryStatsByPkgName(clicked_item_pkgname);
 //				MirrApplication.mDBManager.deleteByAppName(removeObject.getName());
 				// 从数据库中获取更新后的应用信息
-//				 List<AppUseStatics> 	infos = MirrApplication.dayDBManager.findAll();
+//				 List<AppUseStaticsModel> 	infos = MirrApplication.dayDBManager.findStatsAll();
 				Toast.makeText(act, "卸载成功", 0).show();
 			}else{
 				Toast.makeText(act, "无法卸载", 0).show();

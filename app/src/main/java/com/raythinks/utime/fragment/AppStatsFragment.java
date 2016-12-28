@@ -1,7 +1,6 @@
 package com.raythinks.utime.fragment;
 
 import android.os.Bundle;
-import android.support.v4.app.Fragment;
 import android.view.View;
 import android.view.animation.AlphaAnimation;
 import android.view.animation.Animation;
@@ -14,11 +13,9 @@ import com.rayker.core.base.BaseFragment;
 import com.raythinks.utime.R;
 import com.raythinks.utime.adapter.AppStatsDataAdapter;
 import com.raythinks.utime.configs.ExtraConfigs;
-import com.raythinks.utime.mirror.common.MirrApplication;
 import com.raythinks.utime.mirror.db.DBHelper;
 import com.raythinks.utime.mirror.db.DayDBManager;
-import com.raythinks.utime.mirror.enty.AppUseStatics;
-import com.raythinks.utime.mvp.contract.AppStatsContract;
+import com.raythinks.utime.mirror.model.AppUseStaticsModel;
 import com.raythinks.utime.mvp.contract.AppStatsFragsContract;
 import com.raythinks.utime.mvp.presenter.AppStatsFragsPresenterImpl;
 
@@ -51,15 +48,15 @@ public class AppStatsFragment extends BaseFragment<AppStatsFragsPresenterImpl> i
         adapter = new AppStatsDataAdapter(mActivity);
         llAppstats.setAdapter(adapter);
         if (timeType == 0) {
-            updateList(MirrApplication.dayDBManager.findAll(DBHelper.DAY_ALL_APP_INFO));
+            updateList(DayDBManager.getInstance(getActivity().getApplicationContext()).findStatsAll(DBHelper.DAY_ALLAPP_STATS));
         } else if (timeType == 1) {
-            updateList(MirrApplication.dayDBManager.findAll(DBHelper.WEEK_ALL_APP_INFO));
+            updateList(DayDBManager.getInstance(getActivity().getApplicationContext()).findStatsAll(DBHelper.WEEK_ALLAPP_STATS));
         } else {
-            updateList(MirrApplication.dayDBManager.findAll(DBHelper.MONTH_ALL_APP_INFO));
+            updateList(DayDBManager.getInstance(getActivity().getApplicationContext()).findStatsAll(DBHelper.MONTH_ALLAPP_STATS));
         }
     }
 
-    public void updateList(List<AppUseStatics> list) {
+    public void updateList(List<AppUseStaticsModel> list) {
         animation = new AlphaAnimation(0, 1); // AlphaAnimation 控制渐变透明的动画效果
         animation.setDuration(500);
         // animation = new ScaleAnimation(5,0,2,0); //RotateAnimation
