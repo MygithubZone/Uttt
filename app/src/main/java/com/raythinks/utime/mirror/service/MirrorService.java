@@ -101,6 +101,9 @@ public class MirrorService extends Service {
         lst.add(dayAppInfo);
         lst.add(weekAppInfo);
         lst.add(monthAppInfo);
+        boolean isUpdate[] = {"empty".equals(dayAppInfo.getAppName()),
+                "empty".equals(weekAppInfo.getAppName()),
+                "empty".equals(monthAppInfo.getAppName())};
         try {
             PackageManager pm = getPackageManager();
             PackageInfo info = pm.getPackageInfo(pkgName,
@@ -112,7 +115,7 @@ public class MirrorService extends Service {
                 lst.get(i).setSysApp(appStatics.isSysApp());
                 lst.get(i).setUseFreq(lst.get(i).getUseFreq() + 1);
                 lst.get(i).setUseTime(lst.get(i).getUseTime() + timeCount);
-
+                lst.get(i).setIcon(appStatics.getIcon());
                 if (i == 0) {
                     lst.get(i).setAtime(CommonUtils.getNowTime());
                 } else if (i == 1) {
@@ -121,7 +124,7 @@ public class MirrorService extends Service {
                     lst.get(i).setAtime(CommonUtils.getFirstDayOfMonth());
                 }
             }
-            DayDBManager.getInstance(getApplicationContext()).updateTable(lst);
+            DayDBManager.getInstance(getApplicationContext()).updateTable(lst, isUpdate);
         } catch (NameNotFoundException e) {
             LogUtil.e(TAG, "updateUseTime " + pkgName
                     + " NameNotFoundException : " + e.toString());
@@ -160,6 +163,7 @@ public class MirrorService extends Service {
         makeStats();
         return Service.START_STICKY;
     }
+
     /**
      * 线程做统计
      */

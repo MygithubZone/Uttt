@@ -121,7 +121,7 @@ public class StaticsFragment extends BaseFragment implements StaticsContract.Vie
         CommomUtils.makeMeterial(fllStaticsApp, this);
         initChart();
 
-        long trafficCount[]=DayDBManager.getInstance(getActivity().getApplicationContext()).findTrafficCount(0);
+        long trafficCount[]=DayDBManager.getInstance(getActivity()).findTrafficCount(0);
         tvStatsTypeTrafficDes1.setText(getResources().getString(R.string.str_statics_send) + TrafficUtils.formatMB(trafficCount[0]));
         tvStatsTypeTrafficDes2.setText(getResources().getString(R.string.str_statics_recive) + TrafficUtils.formatMB(trafficCount[1]));
     }

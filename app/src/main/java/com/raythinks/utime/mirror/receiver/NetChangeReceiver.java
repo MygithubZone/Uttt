@@ -21,7 +21,7 @@ public class NetChangeReceiver extends BroadcastReceiver {
     public void onReceive(Context context, Intent intent) {
         String action = intent.getAction();
         if (action.equals(ConnectivityManager.CONNECTIVITY_ACTION)) {
-            DayDBManager.getInstance(context.getApplicationContext()).insertTrafficApp(CommonUtils.getNetype(context));
+            DayDBManager.getInstance(context).insertTrafficApp(CommonUtils.getNetype(context));
         }
     }
 }

@@ -25,7 +25,7 @@ public class AppInfoProviderUtils {
     /**
      * 获取已经安装的所有应用的信息，并返回信息列表
      */
-    public static List<AppUseStaticsModel> getAllAppsStats(Context context) {
+    public synchronized static List<AppUseStaticsModel> getAllAppsStats(Context context) {
         PackageManager pm = context.getPackageManager();
         List<PackageInfo> pkgInfo = pm
                 .getInstalledPackages(PackageManager.GET_ACTIVITIES);
@@ -43,7 +43,7 @@ public class AppInfoProviderUtils {
      * @param context
      * @return
      */
-    public static Map<String, AppUseStaticsModel> getAppALL(Context context) {
+    public synchronized static Map<String, AppUseStaticsModel> getAppALL(Context context) {
         PackageManager pm = context.getPackageManager();
         List<PackageInfo> pkgInfo = pm
                 .getInstalledPackages(PackageManager.GET_ACTIVITIES);
@@ -64,7 +64,7 @@ public class AppInfoProviderUtils {
      * 默认统计数据都为零
      * @date 2015-12-30 上午10:35:33
      */
-    public static AppUseStaticsModel getAppFromPkgName(PackageInfo info, PackageManager pm) {
+    public synchronized static AppUseStaticsModel getAppFromPkgName(PackageInfo info, PackageManager pm) {
         AppUseStaticsModel myApp = new AppUseStaticsModel();
         // 获取包名
         String pkgName = info.packageName;
@@ -85,7 +85,7 @@ public class AppInfoProviderUtils {
         return myApp;
     }
 
-    public static AppUseStaticsModel getAppFromPkgName(Context context, String pkgName) {
+    public synchronized  static AppUseStaticsModel getAppFromPkgName(Context context, String pkgName) {
         PackageManager pm = context.getPackageManager();
         AppUseStaticsModel myApp = new AppUseStaticsModel();
         PackageInfo info = null;
@@ -115,7 +115,7 @@ public class AppInfoProviderUtils {
     /*
      * 判断是否是第三方应用。如果是第三方应用，那么返回true否则返回false
      */
-    public static boolean filterApp(ApplicationInfo info) {
+    public synchronized static boolean filterApp(ApplicationInfo info) {
         // 如果系统应用更新之后也被视为是三方应用
         if ((info.flags & ApplicationInfo.FLAG_UPDATED_SYSTEM_APP) != 0) {
             return true;

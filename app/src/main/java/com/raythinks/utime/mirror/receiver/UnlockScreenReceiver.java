@@ -41,7 +41,7 @@ public class UnlockScreenReceiver extends BroadcastReceiver {
      * @date 2015-12-24 下午5:26:16
      */
     public void startWatchdogService() {
-        DayDBManager.getInstance(context.getApplicationContext()).insertTrafficApp(CommonUtils.getNetype(context.getApplicationContext()));
+        DayDBManager.getInstance(context).insertTrafficApp(CommonUtils.getNetype(context));
         Intent mWatchdogService = new Intent(this.context, MirrorService.class);
         this.context.startService(mWatchdogService);
         LogUtil.i(TAG, "startWatchdogService in UnlockScreenReceiver");

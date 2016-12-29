@@ -51,22 +51,22 @@ public class DBHelper extends SQLiteOpenHelper {
     //    // 所有应用流量记录
     private final static String ALL_APP_TRAFFIC_NETCHANGE_SQL = "CREATE TABLE IF NOT EXISTS "
             + ALL_APP_TRAFFIC_NETCHANGE
-            + "(_ID INTEGER PRIMARY KEY AUTOINCREMENT ,pkgName VARCHAR,"
+            + "(_id INTEGER PRIMARY KEY AUTOINCREMENT ,pkgName VARCHAR,"
             + "isSysApp INTEGER,rx INTEGER, tx INTEGER, nettype INTEGER,"
             + "aTime VARCHAR,weekTime VARCHAR,monthTime VARCHAR)";
     private final static String DATY_ALL_APP_INFO_RECORD_SQL = "CREATE TABLE IF NOT EXISTS "
             + DAY_ALLAPP_STATS_RECORD
-            + "(appName VARCHAR ,pkgName VARCHAR PRIMARY KEY,"
+            + "(appName VARCHAR ,pkgName VARCHAR ,"
             + "isSysApp INTEGER, useFreq INTEGER, useTime INTEGER,wifirx INTEGER,wifitx INTEGER,mobilex INTEGER,mobiletx INTEGER, appIcon BLOB,issys INTEGER DEFAULT 0,"
             + "aTime VARCHAR)";
     private final static String MONTH_ALL_APP_INFO_RECORD_SQL = "CREATE TABLE IF NOT EXISTS "
             + MONTH_ALLAPP_STATS_RECORD
-            + "(appName VARCHAR ,pkgName VARCHAR PRIMARY KEY,"
+            + "(appName VARCHAR ,pkgName VARCHAR  ,"
             + "isSysApp INTEGER, useFreq INTEGER, useTime INTEGER,wifirx INTEGER,wifitx INTEGER,  mobilex INTEGER,mobiletx INTEGER, appIcon BLOB,issys INTEGER DEFAULT 0,"
             + "aTime VARCHAR)";
     private final static String WEEK_ALL_APP_INFO_RECORD_SQL = "CREATE TABLE IF NOT EXISTS "
             + WEEK_ALLAPP_STATS_RECORD
-            + "(appName VARCHAR ,pkgName VARCHAR PRIMARY KEY,"
+            + "(appName VARCHAR ,pkgName VARCHAR  ,"
             + "isSysApp INTEGER, useFreq INTEGER, useTime INTEGER,wifirx INTEGER,wifitx INTEGER,  mobilex INTEGER,mobiletx INTEGER, appIcon BLOB,issys INTEGER DEFAULT 0,"
             + "aTime VARCHAR)";
     private static DBHelper mInstance = null;
@@ -93,7 +93,6 @@ public class DBHelper extends SQLiteOpenHelper {
      */
     @Override
     public void onCreate(SQLiteDatabase db) {
-        db.beginTransaction();
         db.execSQL(DATY_ALL_APP_INFO_SQL);
         db.execSQL(WEEK_ALL_APP_INFO_SQL);
         db.execSQL(MONTH_ALL_APP_INFO_SQL);
@@ -101,14 +100,6 @@ public class DBHelper extends SQLiteOpenHelper {
         db.execSQL(DATY_ALL_APP_INFO_RECORD_SQL);
         db.execSQL(MONTH_ALL_APP_INFO_RECORD_SQL);
         db.execSQL(WEEK_ALL_APP_INFO_RECORD_SQL);
-        List<AppUseStaticsModel> listStats = AppInfoProviderUtils.getAllAppsStats(mContext);
-        for (int i = 0; i < statsTable.length; i++) {
-            DayDBManager.insertStatsApp(db, listStats, statsTable[i]);
-            LogUtil.i(TAG, "数据库创建后插入所有应用信息应用 ： " + listStats.get(i).getAppName());
-        }
-        DayDBManager.insertTrafficApp(mContext, db, listStats, CommonUtils.getNetype(mContext));
-        db.setTransactionSuccessful();
-        db.endTransaction();
     }
 
     /**

@@ -13,8 +13,8 @@ public class StartServiceReceiver extends BroadcastReceiver {
     @Override
     public void onReceive(Context context, Intent intent) {
         // 后边的XXX.class就是要启动的服务
-        CommonUtils.clearStatsData(context.getApplicationContext());
-        DayDBManager.getInstance(context.getApplicationContext()).insertTrafficApp(CommonUtils.getNetype(context.getApplicationContext()));
+        CommonUtils.clearStatsData(context);
+        DayDBManager.getInstance(context).insertTrafficApp(CommonUtils.getNetype(context));
         Intent service = new Intent(context, MirrorService.class);
         context.startService(service);
     }

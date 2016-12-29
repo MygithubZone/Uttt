@@ -22,7 +22,7 @@ public class CommUtils {
      * @return
      */
     public static boolean isNoOption(Context context) {
-        PackageManager packageManager = context.getApplicationContext()
+        PackageManager packageManager = context
                 .getPackageManager();
         Intent intent = new Intent(Settings.ACTION_USAGE_ACCESS_SETTINGS);
         List<ResolveInfo> list = packageManager.queryIntentActivities(intent,
@@ -38,7 +38,7 @@ public class CommUtils {
      */
     public static boolean isNoSwitch(Context context) {
         long ts = System.currentTimeMillis();
-        UsageStatsManager usageStatsManager = (UsageStatsManager) context.getApplicationContext()
+        UsageStatsManager usageStatsManager = (UsageStatsManager) context
                 .getSystemService("usagestats");
         List<UsageStats> queryUsageStats = usageStatsManager.queryUsageStats(
                 UsageStatsManager.INTERVAL_BEST, 0, ts);

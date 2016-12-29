@@ -174,18 +174,18 @@ public class CommonUtils {
         if (!TextUtils.equals(
                 PreferenceUtils.getPrefString(context, "dayTime", ""),
                 CommonUtils.getNowTime())) {
-            DayDBManager.getInstance(context.getApplicationContext())
+            DayDBManager.getInstance(context)
                     .newAllAppStats(DBHelper.DAY_ALLAPP_STATS);
             PreferenceUtils.setPrefString(context, "dayTime",
                     CommonUtils.getNowTime());
-            DayDBManager.getInstance(context.getApplicationContext()).insertTrafficApp(CommonUtils.getNetype(context.getApplicationContext()));
+            DayDBManager.getInstance(context).insertTrafficApp(CommonUtils.getNetype(context));
             LogUtil.e(TAG, "updateUseTime 清空日数据");
         }
         if (!TextUtils.equals(
                 PreferenceUtils.getPrefString(context, "weekTime", ""),
                 CommonUtils.getCurrentWeekMonday())
                 && CommonUtils.getIsFristWeek() != 1) {
-            DayDBManager.getInstance(context.getApplicationContext())
+            DayDBManager.getInstance(context)
                     .newAllAppStats(DBHelper.WEEK_ALLAPP_STATS);
             PreferenceUtils.setPrefString(context, "weekTime",
                     CommonUtils.getCurrentWeekMonday());
@@ -194,7 +194,7 @@ public class CommonUtils {
         if (!TextUtils.equals(
                 PreferenceUtils.getPrefString(context, "monTime", ""),
                 CommonUtils.getFirstDayOfMonth())) {
-            DayDBManager.getInstance(context.getApplicationContext())
+            DayDBManager.getInstance(context)
                     .newAllAppStats(DBHelper.MONTH_ALLAPP_STATS);
             PreferenceUtils.setPrefString(context, "monTime",
                     CommonUtils.getFirstDayOfMonth());

@@ -48,17 +48,17 @@ public class AppStatsFragment extends BaseFragment<AppStatsFragsPresenterImpl> i
         adapter = new AppStatsDataAdapter(mActivity);
         llAppstats.setAdapter(adapter);
         if (timeType == 0) {
-            updateList(DayDBManager.getInstance(getActivity().getApplicationContext()).findStatsAll(DBHelper.DAY_ALLAPP_STATS));
+            updateList(DayDBManager.getInstance(getActivity()).findStatsAll(DBHelper.DAY_ALLAPP_STATS));
         } else if (timeType == 1) {
-            updateList(DayDBManager.getInstance(getActivity().getApplicationContext()).findStatsAll(DBHelper.WEEK_ALLAPP_STATS));
+            updateList(DayDBManager.getInstance(getActivity()).findStatsAll(DBHelper.WEEK_ALLAPP_STATS));
         } else {
-            updateList(DayDBManager.getInstance(getActivity().getApplicationContext()).findStatsAll(DBHelper.MONTH_ALLAPP_STATS));
+            updateList(DayDBManager.getInstance(getActivity()).findStatsAll(DBHelper.MONTH_ALLAPP_STATS));
         }
     }
 
     public void updateList(List<AppUseStaticsModel> list) {
         animation = new AlphaAnimation(0, 1); // AlphaAnimation 控制渐变透明的动画效果
-        animation.setDuration(500);
+        animation.setDuration(250);
         // animation = new ScaleAnimation(5,0,2,0); //RotateAnimation
         // 控制画面角度变化的动画效果
         // animation.setDuration(300);

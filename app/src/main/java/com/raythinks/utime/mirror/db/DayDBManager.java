@@ -19,6 +19,7 @@ import com.raythinks.utime.mirror.utils.CalendarUtil;
 import com.raythinks.utime.mirror.utils.CommonUtils;
 import com.raythinks.utime.mirror.utils.IconUtils;
 import com.raythinks.utime.mirror.utils.LogUtil;
+import com.raythinks.utime.mirror.utils.PreferenceUtils;
 import com.raythinks.utime.mirror.utils.TrafficUtils;
 import com.raythinks.utime.utils.CommomUtils;
 
@@ -63,20 +64,40 @@ public class DayDBManager {
      *
      * @param appUseStatics
      */
-    public void updateTable(List<AppUseStaticsModel> appUseStatics) {
+    public void updateTable(List<AppUseStaticsModel> appUseStatics, boolean[] upateArr) {
         db.beginTransaction();
         try {
+            // 依次插入包名，应用名，是否是系统应用，使用频次，使用时间，权重值
+            // 由于这里省略了列的顺序，所以在进行数据插入的时候需要注意和建表顺序一致
+            // + "(appName VARCHAR PRIMARY KEY,pkgName VARCHAR,"
+            // +
+            // "isSysApp INTEGER, useFreq INTEGER, useTime INTEGER, appIcon BLOB,"
+            // + "weight INTEGER)";
             for (int i = 0; i < statsTable.length; i++) {
-                ContentValues cv = new ContentValues();
-                cv.put("useFreq", appUseStatics.get(i).getUseFreq());
-                cv.put("useTime", appUseStatics.get(i).getUseTime());
-                cv.put("aTime", appUseStatics.get(i).getAtime());
-                cv.put("updateTime", System.currentTimeMillis());
-                String[] whereArgs = {String.valueOf(appUseStatics.get(i)
-                        .getPkgName())};
-                db.update(statsTable[i], cv, "pkgName=?", whereArgs);
-                LogUtil.i(TAG, "更新数据数据库的新应用 ： "
-                        + appUseStatics.get(i).getPkgName());
+                if (!upateArr[i]) {
+                    ContentValues cv = new ContentValues();
+                    cv.put("useFreq", appUseStatics.get(i).getUseFreq());
+                    cv.put("useTime", appUseStatics.get(i).getUseTime());
+                    cv.put("aTime", appUseStatics.get(i).getAtime());
+                    cv.put("updateTime", appUseStatics.get(i).getUpdateTime());
+                    String[] whereArgs = {String.valueOf(appUseStatics.get(i)
+                            .getPkgName())};
+                    db.update(statsTable[i], cv, "pkgName=?", whereArgs);
+                    LogUtil.i(TAG, "更新数据数据库的新应用 ： "
+                            + appUseStatics.get(i).getAppName());
+                } else {
+                    db.execSQL("INSERT INTO " + statsTable[i]
+                                    + " VALUES(?, ?, ?, ?, ?,?,?,?)",
+                            new Object[]{appUseStatics.get(i).getAppName(),
+                                    appUseStatics.get(i).getPkgName(),
+                                    appUseStatics.get(i).isSysApp(),
+                                    appUseStatics.get(i).getUseFreq(),
+                                    appUseStatics.get(i).getUseTime(), IconUtils.getIconData(appUseStatics.get(i).getIcon()),
+                                    appUseStatics.get(i).getAtime(), System.currentTimeMillis()});
+                    LogUtil.i(TAG, "新增数据数据库的新应用 ： "
+                            + appUseStatics.get(i).getAppName());
+                }
+
             }
             db.setTransactionSuccessful();
         } catch (SQLException e) {
@@ -114,7 +135,7 @@ public class DayDBManager {
                         });
                 LogUtil.i(TAG, "新增数据数据库的新应用 ： " + appUseStatics.getAppName());
             }
-            insertTraffcApp(mContext, db, appUseStatics, CommonUtils.getNetype(mContext));
+
             db.setTransactionSuccessful();
         } catch (SQLException e) {
             e.printStackTrace();
@@ -152,7 +173,7 @@ public class DayDBManager {
 
     }
 
-    public static void insertStatsApp(final SQLiteDatabase db, List<AppUseStaticsModel> listStats, String table) {
+    private static void insertStatsApp(final SQLiteDatabase db, List<AppUseStaticsModel> listStats, String table) {
         for (int j = 0; j < listStats.size(); j++) {
             db.execSQL(
                     "INSERT INTO " + table
@@ -220,6 +241,13 @@ public class DayDBManager {
         }
     }
 
+    public void insertTrafficApp(String pkName, int netype) {
+        if (netype == ConnectivityManager.TYPE_WIFI || netype == ConnectivityManager.TYPE_MOBILE) {//wifi或者mobile记录
+            AppUseStaticsModel appUseStaticsModel = AppInfoProviderUtils.getAppFromPkgName(mContext, pkName);
+            insertTraffcApp(mContext, db, appUseStaticsModel, netype);
+        }
+    }
+
     /**
      * 网络变化时插入数据
      *
@@ -230,7 +258,7 @@ public class DayDBManager {
             PackageManager pm = mContext.getPackageManager();
             TrafficDbModel listTraffics = new TrafficDbModel(appUseStaticsModel.getPkgName(), appUseStaticsModel.getIsSysApp(), TrafficStats.getUidRxBytes(appUseStaticsModel.getUid()), TrafficStats.getUidTxBytes(appUseStaticsModel.getUid()), netype, CommonUtils.getNowTime(), CommonUtils.getMondayOFWeek(), CommonUtils.getFirstDayOfMonth());
             db.execSQL(
-                    "INSERT INTO " + DBHelper.ALL_APP_TRAFFIC_NETCHANGE
+                    "INSERT INTO " + DBHelper.ALL_APP_TRAFFIC_NETCHANGE + "(pkgName,isSysApp,rx,tx,nettype,aTime,weekTime,monthTime)"
                             + " VALUES(?, ?, ?, ?, ?,?,?,?)",
                     new Object[]{listTraffics.getPkgName(),
                             listTraffics.getIsSysApp(),
@@ -344,7 +372,7 @@ public class DayDBManager {
         } else if (type == 3) {
             key = "monthTime";
         }
-        String sql = "SELECT * FROM " + DBHelper.ALL_APP_TRAFFIC_NETCHANGE + " where aTime=" + today;
+        String sql = "SELECT * FROM " + DBHelper.ALL_APP_TRAFFIC_NETCHANGE + " where "+key+"=" + today;
         Cursor c = db.rawQuery(sql, null);
         List<AppUseStaticsModel> list = new ArrayList<>();
         List<TrafficDbModel> trafficList = new ArrayList<>();
