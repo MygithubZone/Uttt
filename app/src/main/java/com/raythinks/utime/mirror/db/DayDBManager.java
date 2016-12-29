@@ -63,27 +63,20 @@ public class DayDBManager {
      *
      * @param appUseStatics
      */
-    public void updateTrafficTable(List<AppUseStaticsModel> appUseStatics) {
+    public void updateTable(List<AppUseStaticsModel> appUseStatics) {
+        db.beginTransaction();
         try {
-            db.beginTransaction();
-            // 依次插入包名，应用名，是否是系统应用，使用频次，使用时间，权重值
-            // 由于这里省略了列的顺序，所以在进行数据插入的时候需要注意和建表顺序一致
-            // + "(appName VARCHAR PRIMARY KEY,pkgName VARCHAR,"
-            // +
-            // "isSysApp INTEGER, useFreq INTEGER, useTime INTEGER, appIcon BLOB,"
-            // + "weight INTEGER)";
             for (int i = 0; i < statsTable.length; i++) {
                 ContentValues cv = new ContentValues();
-                for (int j = 0; j < appUseStatics.size(); j++) {
-                    cv.put("wifi", appUseStatics.get(j).getUseFreq());
-                    cv.put("mobile", appUseStatics.get(j).getUseTime());
-                    String[] whereArgs = {String.valueOf(appUseStatics.get(j)
-                            .getPkgName())};
-                    db.update(statsTable[j], cv, "pkgName=?", whereArgs);
-                    LogUtil.i(TAG, "更新数据数据库的新应用 ： "
-                            + appUseStatics.get(j).getAppName());
-                }
-
+                cv.put("useFreq", appUseStatics.get(i).getUseFreq());
+                cv.put("useTime", appUseStatics.get(i).getUseTime());
+                cv.put("aTime", appUseStatics.get(i).getAtime());
+                cv.put("updateTime", System.currentTimeMillis());
+                String[] whereArgs = {String.valueOf(appUseStatics.get(i)
+                        .getPkgName())};
+                db.update(statsTable[i], cv, "pkgName=?", whereArgs);
+                LogUtil.i(TAG, "更新数据数据库的新应用 ： "
+                        + appUseStatics.get(i).getPkgName());
             }
             db.setTransactionSuccessful();
         } catch (SQLException e) {
@@ -91,33 +84,13 @@ public class DayDBManager {
         } finally {
             db.endTransaction();
         }
-
     }
 
     /**
-     * 新增或者更新统计时长和频次信息
+     * 初始化app
      *
      * @param appUseStatics
      */
-    public void updateTable(List<AppUseStaticsModel> appUseStatics) {
-        try {
-            db.beginTransaction();
-            // 依次插入包名，应用名，是否是系统应用，使用频次，使用时间，权重值
-            // 由于这里省略了列的顺序，所以在进行数据插入的时候需要注意和建表顺序一致
-            // + "(appName VARCHAR PRIMARY KEY,pkgName VARCHAR,"
-            // +
-            // "isSysApp INTEGER, useFreq INTEGER, useTime INTEGER, appIcon BLOB,"
-            // + "weight INTEGER)";
-            insertTrafficApp(mContext, db, appUseStatics, CommonUtils.getNetype(mContext));
-            db.setTransactionSuccessful();
-        } catch (SQLException e) {
-            e.printStackTrace();
-        } finally {
-            db.endTransaction();
-        }
-
-    }
-
     public void initAddStatsApp(AppUseStaticsModel appUseStatics) {
         db.beginTransaction();
         try {
@@ -130,14 +103,13 @@ public class DayDBManager {
             for (int i = 0; i < statsTable.length; i++) {
                 db.execSQL(
                         "INSERT INTO " + statsTable[i]
-                                + " VALUES(?, ?, ?, ?, ?,?,?,?,?,?)",
+                                + " VALUES(?, ?, ?, ?, ?,?,?,?)",
                         new Object[]{appUseStatics.getAppName(),
                                 appUseStatics.getPkgName(),
                                 appUseStatics.isSysApp(),
                                 0,
                                 0,
-                                0,
-                                0, IconUtils.getIconData(appUseStatics.getIcon()),
+                                IconUtils.getIconData(appUseStatics.getIcon()),
                                 appUseStatics.getAtime(), System.currentTimeMillis()
                         });
                 LogUtil.i(TAG, "新增数据数据库的新应用 ： " + appUseStatics.getAppName());
@@ -167,13 +139,6 @@ public class DayDBManager {
                 deleteAll(table);
                 List<AppUseStaticsModel> listStats = AppInfoProviderUtils.getAllAppsStats(mContext);
                 insertStatsApp(db, listStats, table);
-//                for (int i = 0; i < backupsList.size(); i++) {
-//                    AppUseStaticsModel mm = findTrafficApp(backupsList.get(i).getPkgName(), backupsList.get(i).getAtime());
-//                    backupsList.get(i).setWifiRx(mm.getWifiRx());
-//                    backupsList.get(i).setWifiTx(mm.getWifiTx());
-//                    backupsList.get(i).setMobileTx(mm.getMobileTx());
-//                    backupsList.get(i).setMobileRx(mm.getMobileRx());
-//                }
                 saveBackups(backupsList, backupsMap.get(table));
                 LogUtil.i(TAG, "数据库创建后插入所有应用信息应用newAllAppStats");
                 db.setTransactionSuccessful();
@@ -191,13 +156,15 @@ public class DayDBManager {
         for (int j = 0; j < listStats.size(); j++) {
             db.execSQL(
                     "INSERT INTO " + table
-                            + " VALUES(?, ?, ?, ?, ?,?,?,?,?,?)",
+                            + " VALUES(?, ?, ?, ?, ?,?,?,?)",
                     new Object[]{listStats.get(j).getAppName(),
                             listStats.get(j).getPkgName(),
                             listStats.get(j).isSysApp(),
                             0,
-                            0, 0, 0, IconUtils.getIconData(listStats.get(j).getIcon()),
-                            listStats.get(j).getAtime(), System.currentTimeMillis()
+                            0,
+                            IconUtils.getIconData(listStats.get(j).getIcon()),
+                            listStats.get(j).getAtime(),
+                            System.currentTimeMillis()
                     });
         }
     }
@@ -206,13 +173,18 @@ public class DayDBManager {
         for (int j = 0; j < listStats.size(); j++) {
             db.execSQL(
                     "INSERT INTO " + table
-                            + " VALUES(?, ?, ?, ?, ?,?,?,?,?,?)",
+                            + " VALUES(?, ?, ?, ?, ?,?,?,?,?,?,?)",
                     new Object[]{listStats.get(j).getAppName(),
                             listStats.get(j).getPkgName(),
                             listStats.get(j).isSysApp(),
-                            0,
-                            0, 0, 0, IconUtils.getIconData(listStats.get(j).getIcon()),
-                            listStats.get(j).getAtime(), System.currentTimeMillis()
+                            listStats.get(j).getUseFreq(),
+                            listStats.get(j).getUseTime(),
+                            listStats.get(j).getWifiRx(),
+                            listStats.get(j).getWifiTx(),
+                            listStats.get(j).getMobileRx(),
+                            listStats.get(j).getMobileTx(),
+                            IconUtils.getIconData(listStats.get(j).getIcon()),
+                            listStats.get(j).getAtime()
                     });
         }
     }
@@ -256,15 +228,18 @@ public class DayDBManager {
     private static void insertTraffcApp(Context mContext, SQLiteDatabase db, AppUseStaticsModel appUseStaticsModel, int netype) {
         if (netype == ConnectivityManager.TYPE_WIFI || netype == ConnectivityManager.TYPE_MOBILE) {//wifi或者mobile记录
             PackageManager pm = mContext.getPackageManager();
-            TrafficDbModel listTraffics = new TrafficDbModel(appUseStaticsModel.getPkgName(), appUseStaticsModel.getIsSysApp(), TrafficStats.getUidRxBytes(appUseStaticsModel.getUid()), TrafficStats.getUidTxBytes(appUseStaticsModel.getUid()), netype, CommonUtils.getNowTime());
+            TrafficDbModel listTraffics = new TrafficDbModel(appUseStaticsModel.getPkgName(), appUseStaticsModel.getIsSysApp(), TrafficStats.getUidRxBytes(appUseStaticsModel.getUid()), TrafficStats.getUidTxBytes(appUseStaticsModel.getUid()), netype, CommonUtils.getNowTime(), CommonUtils.getMondayOFWeek(), CommonUtils.getFirstDayOfMonth());
             db.execSQL(
                     "INSERT INTO " + DBHelper.ALL_APP_TRAFFIC_NETCHANGE
-                            + " VALUES(?, ?, ?, ?, ?,?)",
+                            + " VALUES(?, ?, ?, ?, ?,?,?,?)",
                     new Object[]{listTraffics.getPkgName(),
                             listTraffics.getIsSysApp(),
                             listTraffics.getRx(),
                             listTraffics.getTx(),
-                            listTraffics.getNettype(), listTraffics.getaTime()
+                            listTraffics.getNettype(),
+                            listTraffics.getaTime(),
+                            listTraffics.getWeekTime(),
+                            listTraffics.getMonthTime()
                     });
         }
 
@@ -289,7 +264,6 @@ public class DayDBManager {
     public AppUseStaticsModel queryStatsByPkgName(String pkgName, String table) {
         String sql = "SELECT * FROM " + table + " where pkgName= '" + pkgName
                 + "'";
-
         AppUseStaticsModel info = new AppUseStaticsModel();
         Cursor c = db.rawQuery(sql, null);
         if (c.moveToNext()) {
@@ -327,8 +301,8 @@ public class DayDBManager {
             info.setSysApp(c.getInt(c.getColumnIndex("isSysApp")));
             info.setUseFreq(c.getInt(c.getColumnIndex("useFreq")));
             info.setUseTime(c.getInt(c.getColumnIndex("useTime")));
-            // info.setIcon(IconUtils.getDrawableFromBitmap(IconUtils
-            // .getBitmapFromBytes(c.getBlob(c.getColumnIndex("appIcon")))));
+            info.setIcon(IconUtils.getDrawableFromBitmap(IconUtils
+                    .getBitmapFromBytes(c.getBlob(c.getColumnIndex("appIcon")))));
             info.setUpdateTime(c.getInt(c.getColumnIndex("updateTime")));
             info.setAtime(c.getString(c.getColumnIndex("aTime")));
             if (info.getUseFreq() > 0 && info.getUseTime() > 0) {
@@ -340,47 +314,36 @@ public class DayDBManager {
         return infos;
     }
 
-    public AppUseStaticsModel findTrafficApp(String table, String pkName, String today) {
-        String sql = "SELECT * FROM " + DBHelper.ALL_APP_TRAFFIC_NETCHANGE + " where aTime=" + today + " and pkgName=" + pkName;
-        Cursor c = db.rawQuery(sql, null);
-        AppUseStaticsModel appFromPkgName = new AppUseStaticsModel();
-        int i = 0;
-        TrafficDbModel preTra = null;
-        while (c.moveToNext()) {
-            TrafficDbModel info = new TrafficDbModel();
-            info.setPkgName(c.getString(c.getColumnIndex("pkgName")));
-            info.set_id(c.getString(c.getColumnIndex("_id")));
-            info.setIsSysApp(c.getInt(c.getColumnIndex("isSysApp")));
-            info.setTx(c.getLong(c.getColumnIndex("tx")));
-            info.setNettype(c.getInt(c.getColumnIndex("nettype")));
-            info.setRx(c.getLong(c.getColumnIndex("rx")));
-            info.setaTime(c.getString(c.getColumnIndex("aTime")));
-            if (preTra != null) {
-                if (preTra.getNettype() == ConnectivityManager.TYPE_WIFI) {
-                    appFromPkgName.setWifiRx((appFromPkgName.getWifiRx() + info.getRx() - preTra.getRx()));
-                    appFromPkgName.setWifiTx((appFromPkgName.getWifiTx() + info.getTx() - preTra.getTx()));
-                } else {
-                    appFromPkgName.setMobileRx((appFromPkgName.getMobileRx() + info.getRx() - preTra.getRx()));
-                    appFromPkgName.setMobileTx((appFromPkgName.getMobileTx() + info.getTx() - preTra.getTx()));
-
-                }
-            }
-            preTra = info;
+    /**
+     * @param type 0：wifi+mobile;1:wifi;2:mobile
+     * @return 数组：0：Tx;1:Rx;
+     */
+    public long[] findTrafficCount(int type) {
+        List<AppUseStaticsModel> list = findTrafficAll(1, CommonUtils.getNowTime());
+        long[] trafficCount = new long[2];
+        trafficCount[0] = 0;
+        trafficCount[1] = 0;
+        for (int i = 0; i < list.size(); i++) {
+            trafficCount[0] = trafficCount[0] + ((type == 0 || type == 1) ? list.get(i).getMobileTx() : 0) + ((type == 0 || type == 2) ? list.get(i).getWifiTx() : 0);
+            trafficCount[1] = trafficCount[1] + ((type == 0 || type == 1) ? list.get(i).getMobileRx() : 0) + ((type == 0 || type == 2) ? list.get(i).getWifiRx() : 0);
         }
-        c.close();
-        if (TextUtils.equals(CommonUtils.getNowTime(), today)) {
-            if (preTra.getNettype() == ConnectivityManager.TYPE_WIFI) {
-                appFromPkgName.setWifiRx((appFromPkgName.getWifiRx() + TrafficStats.getUidRxBytes(appFromPkgName.getUid()) - preTra.getRx()));
-                appFromPkgName.setWifiTx((appFromPkgName.getWifiTx() + TrafficStats.getUidTxBytes(appFromPkgName.getUid()) - preTra.getTx()));
-            } else {
-                appFromPkgName.setMobileRx((appFromPkgName.getMobileRx() + TrafficStats.getUidRxBytes(appFromPkgName.getUid()) - preTra.getRx()));
-                appFromPkgName.setMobileTx((appFromPkgName.getMobileTx() + TrafficStats.getUidTxBytes(appFromPkgName.getUid()) - preTra.getTx()));
-            }
-        }
-        return appFromPkgName;
+        return trafficCount;
     }
 
-    public List<AppUseStaticsModel> findTrafficTadayAll(String today) {
+    /**
+     * 获取流量数据
+     *
+     * @param type  1：天；2：周；3：月
+     * @param today
+     * @return
+     */
+    public List<AppUseStaticsModel> findTrafficAll(int type, String today) {
+        String key = "aTime";
+        if (type == 2) {
+            key = "weekTime";
+        } else if (type == 3) {
+            key = "monthTime";
+        }
         String sql = "SELECT * FROM " + DBHelper.ALL_APP_TRAFFIC_NETCHANGE + " where aTime=" + today;
         Cursor c = db.rawQuery(sql, null);
         List<AppUseStaticsModel> list = new ArrayList<>();
@@ -394,6 +357,8 @@ public class DayDBManager {
             info.setNettype(c.getInt(c.getColumnIndex("nettype")));
             info.setRx(c.getLong(c.getColumnIndex("rx")));
             info.setaTime(c.getString(c.getColumnIndex("aTime")));
+            info.setWeekTime(c.getString(c.getColumnIndex("weekTime")));
+            info.setWeekTime(c.getString(c.getColumnIndex("monthTime")));
             trafficList.add(info);
         }
         c.close();
@@ -425,7 +390,6 @@ public class DayDBManager {
                 }
             }
         }
-
         return list;
     }
 

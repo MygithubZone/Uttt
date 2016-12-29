@@ -15,8 +15,37 @@ public class TrafficDbModel {
     private long tx;
     private int nettype;
     private String aTime;
+    private String weekTime;
+    private String monthTime;
     public String get_id() {
         return _id;
+    }
+
+    public String getWeekTime() {
+        return weekTime;
+    }
+
+    public void setWeekTime(String weekTime) {
+        this.weekTime = weekTime;
+    }
+
+    public String getMonthTime() {
+        return monthTime;
+    }
+
+    public void setMonthTime(String monthTime) {
+        this.monthTime = monthTime;
+    }
+
+    public TrafficDbModel(String pkgName, int isSysApp, long rx, long tx, int nettype, String aTime, String weekTime, String monthTime) {
+        this.pkgName = pkgName;
+        this.isSysApp = isSysApp;
+        this.rx = rx;
+        this.tx = tx;
+        this.nettype = nettype;
+        this.aTime = aTime;
+        this.weekTime = weekTime;
+        this.monthTime = monthTime;
     }
 
     public void set_id(String _id) {
@@ -25,15 +54,6 @@ public class TrafficDbModel {
 
     public TrafficDbModel() {
 
-    }
-
-    public TrafficDbModel(String pkgName, int isSysApp, long rx, long tx, int nettype, String aTime) {
-        this.pkgName = pkgName;
-        this.isSysApp = isSysApp;
-        this.rx = rx;
-        this.tx = tx;
-        this.nettype = nettype;
-        this.aTime = aTime;
     }
 
     public String getPkgName() {

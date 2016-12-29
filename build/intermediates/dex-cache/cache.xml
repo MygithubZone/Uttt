@@ -16,7 +16,7 @@
         jumboMode="true"
         optimize="true"
         revision="25.0.1"
-        sha1="592a8c35371a06184fb9f7a0771cbbbf55dc5266">
+        sha1="1355f278a628e56f162644819039fa3170ed6224">
         <dex dex="H:\ProjectFiles\OASVNlite\app\build\intermediates\transforms\dex\debug\folders\1000\10\instant-run_edc6784f047860461bae669e3d6d3af36cb454a9\classes.dex" />
     </item>
     <item
@@ -214,7 +214,7 @@
         jumboMode="true"
         optimize="true"
         revision="25.0.1"
-        sha1="c32c4a79da11e46b203ec5cdca0e9e2af45c3828">
+        sha1="fbecd902b0aabf926506b0f95c1904fe2430966a">
         <dex dex="H:\ProjectFiles\OASVNlite\app\build\intermediates\transforms\dex\debug\folders\1000\10\instant-run-bootstrap_87e183c8ce05abd468e272cd077e5193cc116695\classes.dex" />
     </item>
     <item

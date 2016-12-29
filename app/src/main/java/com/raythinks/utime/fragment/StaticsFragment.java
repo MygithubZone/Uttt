@@ -28,6 +28,7 @@ import com.rayker.core.base.BaseFragment;
 import com.raythinks.utime.R;
 import com.raythinks.utime.activity.AppStatsActivity;
 import com.raythinks.utime.callable.IMeterialClickCallable;
+import com.raythinks.utime.mirror.db.DayDBManager;
 import com.raythinks.utime.mirror.utils.TrafficUtils;
 import com.raythinks.utime.mvp.contract.StaticsContract;
 import com.raythinks.utime.mvp.presenter.StaticsPresenterImpl;
@@ -120,8 +121,9 @@ public class StaticsFragment extends BaseFragment implements StaticsContract.Vie
         CommomUtils.makeMeterial(fllStaticsApp, this);
         initChart();
 
-        tvStatsTypeTrafficDes1.setText(getResources().getString(R.string.str_statics_send) + TrafficUtils.formatMB(TrafficStats.getTotalTxBytes()));
-        tvStatsTypeTrafficDes2.setText(getResources().getString(R.string.str_statics_recive) + TrafficUtils.formatMB(TrafficStats.getTotalRxBytes()));
+        long trafficCount[]=DayDBManager.getInstance(getActivity().getApplicationContext()).findTrafficCount(0);
+        tvStatsTypeTrafficDes1.setText(getResources().getString(R.string.str_statics_send) + TrafficUtils.formatMB(trafficCount[0]));
+        tvStatsTypeTrafficDes2.setText(getResources().getString(R.string.str_statics_recive) + TrafficUtils.formatMB(trafficCount[1]));
     }
 
     @Override

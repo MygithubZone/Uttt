@@ -22,8 +22,6 @@ public class DBHelper extends SQLiteOpenHelper {
     public static String DAY_ALLAPP_STATS = "day_allapp_stats"; // 日所有应用信息表
     public static String WEEK_ALLAPP_STATS = "week_allapp_stats"; // 周所有应用信息表
     public static String MONTH_ALLAPP_STATS = "month_allapp_stats"; // 月所有应用信息表
-    public static String WEEK_ALLAPP_TRAFFIC_STATS = "week_allapp_trafficstats"; // 周所有应用信息表
-    public static String MONTH_ALLAPP_TRAFFIC_STATS = "month_allapp_trafficstats"; // 月所有应用信息表
 
     public static String ALL_APP_TRAFFIC_NETCHANGE = "allapp_traffic_netchange"; // 所有应用网络改变流量记录
 
@@ -38,48 +36,38 @@ public class DBHelper extends SQLiteOpenHelper {
     private final static String DATY_ALL_APP_INFO_SQL = "CREATE TABLE IF NOT EXISTS "
             + DAY_ALLAPP_STATS
             + "(appName VARCHAR ,pkgName VARCHAR PRIMARY KEY,"
-            + "isSysApp INTEGER, useFreq INTEGER, useTime INTEGER,,wifi INTEGER, mobile INTEGER, appIcon BLOB,"
+            + "isSysApp INTEGER, useFreq INTEGER, useTime INTEGER, appIcon BLOB,"
             + "aTime VARCHAR,updateTime INTEGER)";
     private final static String WEEK_ALL_APP_INFO_SQL = "CREATE TABLE IF NOT EXISTS "
             + WEEK_ALLAPP_STATS
             + "(appName VARCHAR,pkgName VARCHAR PRIMARY KEY,"
-            + "isSysApp INTEGER, useFreq INTEGER, useTime INTEGER,wifi INTEGER, mobile INTEGER,appIcon BLOB,"
+            + "isSysApp INTEGER, useFreq INTEGER, useTime INTEGER,appIcon BLOB,"
             + "aTime VARCHAR,updateTime INTEGER)";
     private final static String MONTH_ALL_APP_INFO_SQL = "CREATE TABLE IF NOT EXISTS "
             + MONTH_ALLAPP_STATS
             + "(appName VARCHAR,pkgName VARCHAR  PRIMARY KEY,"
-            + "isSysApp INTEGER, useFreq INTEGER, useTime INTEGER,wifi INTEGER, mobile INTEGER, appIcon BLOB,"
+            + "isSysApp INTEGER, useFreq INTEGER, useTime INTEGER, appIcon BLOB,"
             + "aTime VARCHAR,updateTime INTEGER)";
     //    // 所有应用流量记录
     private final static String ALL_APP_TRAFFIC_NETCHANGE_SQL = "CREATE TABLE IF NOT EXISTS "
             + ALL_APP_TRAFFIC_NETCHANGE
-            + "(_id INTEGER PRIMARY KEY AUTOINCREMENT ,pkgName VARCHAR,"
+            + "(_ID INTEGER PRIMARY KEY AUTOINCREMENT ,pkgName VARCHAR,"
             + "isSysApp INTEGER,rx INTEGER, tx INTEGER, nettype INTEGER,"
-            + "aTime VARCHAR)";
+            + "aTime VARCHAR,weekTime VARCHAR,monthTime VARCHAR)";
     private final static String DATY_ALL_APP_INFO_RECORD_SQL = "CREATE TABLE IF NOT EXISTS "
             + DAY_ALLAPP_STATS_RECORD
             + "(appName VARCHAR ,pkgName VARCHAR PRIMARY KEY,"
-            + "isSysApp INTEGER, useFreq INTEGER, useTime INTEGER,wifirx INTEGER,wifitx INTEGER,  mobiletx INTEGER,mobiletx INTEGER, appIcon BLOB,issys INTEGER DEFAULT 0,"
+            + "isSysApp INTEGER, useFreq INTEGER, useTime INTEGER,wifirx INTEGER,wifitx INTEGER,mobilex INTEGER,mobiletx INTEGER, appIcon BLOB,issys INTEGER DEFAULT 0,"
             + "aTime VARCHAR)";
     private final static String MONTH_ALL_APP_INFO_RECORD_SQL = "CREATE TABLE IF NOT EXISTS "
             + MONTH_ALLAPP_STATS_RECORD
             + "(appName VARCHAR ,pkgName VARCHAR PRIMARY KEY,"
-            + "isSysApp INTEGER, useFreq INTEGER, useTime INTEGER,wifirx INTEGER,wifitx INTEGER,  mobiletx INTEGER,mobiletx INTEGER, appIcon BLOB,issys INTEGER DEFAULT 0,"
+            + "isSysApp INTEGER, useFreq INTEGER, useTime INTEGER,wifirx INTEGER,wifitx INTEGER,  mobilex INTEGER,mobiletx INTEGER, appIcon BLOB,issys INTEGER DEFAULT 0,"
             + "aTime VARCHAR)";
     private final static String WEEK_ALL_APP_INFO_RECORD_SQL = "CREATE TABLE IF NOT EXISTS "
             + WEEK_ALLAPP_STATS_RECORD
             + "(appName VARCHAR ,pkgName VARCHAR PRIMARY KEY,"
-            + "isSysApp INTEGER, useFreq INTEGER, useTime INTEGER,wifirx INTEGER,wifitx INTEGER,  mobiletx INTEGER,mobiletx INTEGER, appIcon BLOB,issys INTEGER DEFAULT 0,"
-            + "aTime VARCHAR)";
-    private final static String MONTH_ALLAPP_TRAFFIC_STATS_SQL = "CREATE TABLE IF NOT EXISTS "
-            + MONTH_ALLAPP_TRAFFIC_STATS
-            + "(appName VARCHAR ,pkgName VARCHAR PRIMARY KEY,"
-            + "isSysApp INTEGER,  wifirx INTEGER,wifitx INTEGER,  mobiletx INTEGER,mobiletx INTEGER, appIcon BLOB,issys INTEGER DEFAULT 0,"
-            + "aTime VARCHAR)";
-    private final static String WEEK_ALLAPP_TRAFFIC_STATS_SQL = "CREATE TABLE IF NOT EXISTS "
-            + WEEK_ALLAPP_TRAFFIC_STATS
-            + "(appName VARCHAR ,pkgName VARCHAR PRIMARY KEY,"
-            + "isSysApp INTEGER,wifirx INTEGER,wifitx INTEGER,  mobiletx INTEGER,mobiletx INTEGER, appIcon BLOB,"
+            + "isSysApp INTEGER, useFreq INTEGER, useTime INTEGER,wifirx INTEGER,wifitx INTEGER,  mobilex INTEGER,mobiletx INTEGER, appIcon BLOB,issys INTEGER DEFAULT 0,"
             + "aTime VARCHAR)";
     private static DBHelper mInstance = null;
     Context mContext;

@@ -2,6 +2,7 @@ package com.raythinks.utime.mirror.service;
 
 import android.annotation.TargetApi;
 import android.app.ActivityManager;
+import android.app.Notification;
 import android.app.Service;
 import android.app.usage.UsageStats;
 import android.app.usage.UsageStatsManager;
@@ -159,7 +160,6 @@ public class MirrorService extends Service {
         makeStats();
         return Service.START_STICKY;
     }
-
     /**
      * 线程做统计
      */

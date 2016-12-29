@@ -72,7 +72,7 @@ public class AppStatsDataAdapter extends BaseAdapter {
             e.printStackTrace();
         }
         viewHolder.tvAppstatsTopnum.setText((position + 1) + "");
-        viewHolder.ivAppstatsAppname.setText(data.get(position).getName());
+        viewHolder.ivAppstatsAppname.setText(data.get(position).getAppName());
         viewHolder.rpbAppstatsData.setMax(total);
         viewHolder.rpbAppstatsData.setProgress(data.get(position).getUseTime());
         viewHolder.rpbAppstatsData.invalidate();

@@ -26,6 +26,7 @@ public class DateChangeReceiver extends BroadcastReceiver {
     public void onReceive(Context context, Intent intent) {
         if ("android.intent.action.DATE_CHANGED".equals(intent.getAction())) {//日期改变则操作
             CommonUtils.clearStatsData(context.getApplicationContext());
+            DayDBManager.getInstance(context.getApplicationContext()).insertTrafficApp(CommonUtils.getNetype(context.getApplicationContext()));
         }
     }
 
