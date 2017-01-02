@@ -29,7 +29,7 @@ public class TrafficStatsDataAdapter extends BaseAdapter {
     SceneModeContract.Presenter presenter;
     private List<AppUseStaticsModel> data = new ArrayList<AppUseStaticsModel>();
     public int currentOldPosi = -1;
-    int total;
+    long total;
 
     @Override
     public int getCount() {
@@ -74,14 +74,13 @@ public class TrafficStatsDataAdapter extends BaseAdapter {
         viewHolder.tvAppstatsTopnum.setText((position + 1) + "");
         viewHolder.ivAppstatsAppname.setText(data.get(position).getAppName());
         viewHolder.rpbAppstatsData.setMax(total);
-        viewHolder.rpbAppstatsData.setProgress(data.get(position).getUseTime());
+        viewHolder.rpbAppstatsData.setProgress((data.get(position).getWifiRx() + data.get(position).getWifiTx()));
         viewHolder.rpbAppstatsData.invalidate();
-        viewHolder.tvAppstatsData.setText(CommonUtils.getFormatTime(data.get(
-                position).getUseTime()));
+        viewHolder.tvAppstatsData.setText((data.get(position).getWifiRx() + data.get(position).getWifiTx()) + "");
         return convertView;
     }
 
-    public void setData(List<AppUseStaticsModel> data, int total) {
+    public void setData(List<AppUseStaticsModel> data, long total) {
         this.data = data;
         this.total = total;
         notifyDataSetChanged();

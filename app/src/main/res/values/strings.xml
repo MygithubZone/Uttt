@@ -13,6 +13,8 @@
     <string name="tb_rank">Top Charts</string>
     <string name="str_statics_send">Send: </string>
     <string name="str_statics_recive">Recive: </string>
+    <string name="str_statics_useTime">useTime:</string>
+    <string name="str_statics_useNum">useNum:</string>
     <string name="title_back">Back</string>
     <string name="title_statics">Statics</string>
     <string name="str_ranktype_hot">Hot</string>
@@ -54,6 +56,9 @@
     <string name="str_appstats_week">Week</string>
     <string name="str_appstats_month">Mon</string>
     <string name="str_title_appstats">App Stats</string>
+    <string name="str_unit_hour">hr</string>
+    <string name="str_unit_min">min</string>
+    <string name="str_count_sec">sec</string>
     <!--注意%1$d 表示一个参数，d表示整数，%1&s表示字符串，如果有第二个参数的话数字往上加，如%2$s-->
     <string-array name="arr_str_repeat_time">
         <item>5</item>

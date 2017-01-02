@@ -74,7 +74,8 @@
                 <ImageView
                     android:id="@+id/iv_stats_msg"
                     style="@style/style_stats_type_pic"
-                    android:src="@mipmap/ic_traffic" />
+                    android:src="@mipmap/ic_traffic"
+                    />
 
                 <LinearLayout style="@style/style_stats_type_des">
 

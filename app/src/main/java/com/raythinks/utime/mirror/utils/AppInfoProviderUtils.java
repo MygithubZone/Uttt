@@ -28,7 +28,7 @@ public class AppInfoProviderUtils {
     public synchronized static List<AppUseStaticsModel> getAllAppsStats(Context context) {
         PackageManager pm = context.getPackageManager();
         List<PackageInfo> pkgInfo = pm
-                .getInstalledPackages(PackageManager.GET_ACTIVITIES);
+                .getInstalledPackages(0);
         List<AppUseStaticsModel> result = new ArrayList<AppUseStaticsModel>();
         for (PackageInfo info : pkgInfo) {
             result.add(getAppFromPkgName(info, pm));
@@ -46,7 +46,7 @@ public class AppInfoProviderUtils {
     public synchronized static Map<String, AppUseStaticsModel> getAppALL(Context context) {
         PackageManager pm = context.getPackageManager();
         List<PackageInfo> pkgInfo = pm
-                .getInstalledPackages(PackageManager.GET_ACTIVITIES);
+                .getInstalledPackages(0);
         Map<String, AppUseStaticsModel> result = new HashMap<String, AppUseStaticsModel>();
         for (PackageInfo info : pkgInfo) {
             result.put(info.packageName, getAppFromPkgName(info, pm));
@@ -65,6 +65,7 @@ public class AppInfoProviderUtils {
      * @date 2015-12-30 上午10:35:33
      */
     public synchronized static AppUseStaticsModel getAppFromPkgName(PackageInfo info, PackageManager pm) {
+
         AppUseStaticsModel myApp = new AppUseStaticsModel();
         // 获取包名
         String pkgName = info.packageName;
@@ -86,6 +87,7 @@ public class AppInfoProviderUtils {
     }
 
     public synchronized  static AppUseStaticsModel getAppFromPkgName(Context context, String pkgName) {
+        synchronized(context){
         PackageManager pm = context.getPackageManager();
         AppUseStaticsModel myApp = new AppUseStaticsModel();
         PackageInfo info = null;
@@ -110,6 +112,7 @@ public class AppInfoProviderUtils {
         }
         LogUtil.i(TAG, "getAppFromPkgName: " + myApp.getPkgName());
         return myApp;
+        }
     }
 
     /*

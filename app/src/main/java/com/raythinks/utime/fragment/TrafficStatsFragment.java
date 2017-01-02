@@ -12,10 +12,13 @@ import com.lcodecore.tkrefreshlayout.TwinklingRefreshLayout;
 import com.rayker.core.base.BaseFragment;
 import com.raythinks.utime.R;
 import com.raythinks.utime.adapter.AppStatsDataAdapter;
+import com.raythinks.utime.adapter.TrafficStatsAdapter;
+import com.raythinks.utime.adapter.TrafficStatsDataAdapter;
 import com.raythinks.utime.configs.ExtraConfigs;
 import com.raythinks.utime.mirror.db.DBHelper;
 import com.raythinks.utime.mirror.db.DayDBManager;
 import com.raythinks.utime.mirror.model.AppUseStaticsModel;
+import com.raythinks.utime.mirror.utils.CommonUtils;
 import com.raythinks.utime.mvp.contract.AppStatsFragsContract;
 import com.raythinks.utime.mvp.contract.TrafficStatsContract;
 import com.raythinks.utime.mvp.contract.TrafficStatsFragsContract;
@@ -33,7 +36,7 @@ import java.util.List;
 public class TrafficStatsFragment extends BaseFragment<TrafficStatsFragsPresenterImpl> implements TrafficStatsFragsContract.View {
     private TwinklingRefreshLayout ttrflRefresh;
     private ListView llAppstats;
-    AppStatsDataAdapter adapter;
+    TrafficStatsDataAdapter adapter;
     private Animation animation;
     private LayoutAnimationController controller;
     int timeType = 0;
@@ -48,14 +51,14 @@ public class TrafficStatsFragment extends BaseFragment<TrafficStatsFragsPresente
         timeType = getArguments().getInt(ExtraConfigs.EXTRA_APPSTATS_TIMETYPE, 0);
         ttrflRefresh = (TwinklingRefreshLayout) getView().findViewById(R.id.ttrfl_refresh);
         llAppstats = (ListView) getView().findViewById(R.id.ll_appstats);
-        adapter = new AppStatsDataAdapter(mActivity);
+        adapter = new TrafficStatsDataAdapter(mActivity);
         llAppstats.setAdapter(adapter);
         if (timeType == 0) {
-            updateList(DayDBManager.getInstance(getActivity()).findStatsAll(DBHelper.DAY_ALLAPP_STATS));
+            updateList(DayDBManager.getInstance(getActivity()).findTrafficAll(1, CommonUtils.getNowTime()));
         } else if (timeType == 1) {
-            updateList(DayDBManager.getInstance(getActivity()).findStatsAll(DBHelper.WEEK_ALLAPP_STATS));
+            updateList(DayDBManager.getInstance(getActivity()).findTrafficAll(2, CommonUtils.getCurrentWeekMonday()));
         } else {
-            updateList(DayDBManager.getInstance(getActivity()).findStatsAll(DBHelper.MONTH_ALLAPP_STATS));
+            updateList(DayDBManager.getInstance(getActivity()).findTrafficAll(3, CommonUtils.getFirstDayOfMonth()));
         }
     }
 
@@ -71,10 +74,10 @@ public class TrafficStatsFragment extends BaseFragment<TrafficStatsFragsPresente
         controller = new LayoutAnimationController(animation, 1f);
         controller.setOrder(LayoutAnimationController.ORDER_NORMAL);
         llAppstats.setLayoutAnimation(controller);
-        int total = 0;
+        long total = 0;
         for (int i = 0; i < list.size(); i++) {
             {
-                total = total + list.get(i).getUseTime();
+                total = total + list.get(i).getWifiRx()+list.get(i).getWifiTx();
             }
             adapter.setData(list, total);
             llAppstats.setOnItemClickListener(new AdapterView.OnItemClickListener() {

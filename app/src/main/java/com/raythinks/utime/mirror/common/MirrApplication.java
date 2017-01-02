@@ -17,6 +17,7 @@ import android.preference.PreferenceManager;
 
 import com.raythinks.utime.mirror.db.DayDBManager;
 import com.raythinks.utime.mirror.utils.AppInfoProviderUtils;
+import com.raythinks.utime.mirror.utils.CommonUtils;
 import com.raythinks.utime.mirror.utils.LogUtil;
 
 /**
@@ -57,6 +58,7 @@ public class MirrApplication extends Application {
 //		weekDBManager = new WeekDBManager(mAppContext);
 //		monthDBManager = new MonthDBManager(mAppContext);
 		mActivityManager = (ActivityManager) getSystemService(Context.ACTIVITY_SERVICE);
+		DayDBManager.getInstance(this).insertTrafficApp(CommonUtils.getNetype(this));
 		homeList = getHomes();
 	}
 

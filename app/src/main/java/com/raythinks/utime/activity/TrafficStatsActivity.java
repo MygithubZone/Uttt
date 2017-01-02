@@ -8,6 +8,7 @@ import android.widget.TextView;
 import com.rayker.core.base.BaseActivity;
 import com.raythinks.utime.R;
 import com.raythinks.utime.adapter.AppStatsAdapter;
+import com.raythinks.utime.adapter.TrafficStatsAdapter;
 import com.raythinks.utime.mvp.contract.AppStatsContract;
 import com.raythinks.utime.mvp.contract.TrafficStatsContract;
 import com.raythinks.utime.mvp.presenter.AppStatsPresenterImpl;
@@ -52,7 +53,7 @@ public class TrafficStatsActivity extends BaseActivity<TrafficStatsPresenterImpl
         tvAppstatsMon = (TextView) findViewById(R.id.tv_appstats_mon);
         imgRight = (ImageView) findViewById(R.id.img_right);
         vpAppstats = (ViewPager) findViewById(R.id.vp_appstats);
-        vpAppstats.setAdapter(new AppStatsAdapter(getSupportFragmentManager()));
+        vpAppstats.setAdapter(new TrafficStatsAdapter(getSupportFragmentManager()));
         vpAppstats.addOnPageChangeListener(this);
         tvTitleBack.setVisibility(View.VISIBLE);
         tvTitleBack.setText("App");

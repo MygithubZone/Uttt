@@ -47,16 +47,26 @@ public class AppStatsFragment extends BaseFragment<AppStatsFragsPresenterImpl> i
         llAppstats = (ListView) getView().findViewById(R.id.ll_appstats);
         adapter = new AppStatsDataAdapter(mActivity);
         llAppstats.setAdapter(adapter);
+        updateType(false);
+    }
+
+    /**
+     * 显示内容
+     *
+     * @param isShowTime
+     */
+
+    public void updateType(boolean isShowTime) {
         if (timeType == 0) {
-            updateList(DayDBManager.getInstance(getActivity()).findStatsAll(DBHelper.DAY_ALLAPP_STATS));
+            updateList(DayDBManager.getInstance(getActivity()).findStatsAll(DBHelper.DAY_ALLAPP_STATS), isShowTime);
         } else if (timeType == 1) {
-            updateList(DayDBManager.getInstance(getActivity()).findStatsAll(DBHelper.WEEK_ALLAPP_STATS));
+            updateList(DayDBManager.getInstance(getActivity()).findStatsAll(DBHelper.WEEK_ALLAPP_STATS), isShowTime);
         } else {
-            updateList(DayDBManager.getInstance(getActivity()).findStatsAll(DBHelper.MONTH_ALLAPP_STATS));
+            updateList(DayDBManager.getInstance(getActivity()).findStatsAll(DBHelper.MONTH_ALLAPP_STATS), isShowTime);
         }
     }
 
-    public void updateList(List<AppUseStaticsModel> list) {
+    public void updateList(List<AppUseStaticsModel> list, boolean isShowTime) {
         animation = new AlphaAnimation(0, 1); // AlphaAnimation 控制渐变透明的动画效果
         animation.setDuration(250);
         // animation = new ScaleAnimation(5,0,2,0); //RotateAnimation

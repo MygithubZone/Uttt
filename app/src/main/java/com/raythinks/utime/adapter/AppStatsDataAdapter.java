@@ -66,17 +66,13 @@ public class AppStatsDataAdapter extends BaseAdapter {
         } else {
             viewHolder = (ViewHolder) convertView.getTag();
         }
-        try {
-            viewHolder.ivAppstatsIcon.setImageDrawable(context.getPackageManager().getApplicationIcon(data.get(position).getPkgName()));
-        } catch (PackageManager.NameNotFoundException e) {
-            e.printStackTrace();
-        }
+        viewHolder.ivAppstatsIcon.setImageDrawable(data.get(position).getIcon());
         viewHolder.tvAppstatsTopnum.setText((position + 1) + "");
         viewHolder.ivAppstatsAppname.setText(data.get(position).getAppName());
         viewHolder.rpbAppstatsData.setMax(total);
         viewHolder.rpbAppstatsData.setProgress(data.get(position).getUseTime());
         viewHolder.rpbAppstatsData.invalidate();
-        viewHolder.tvAppstatsData.setText(CommonUtils.getFormatTime(data.get(
+        viewHolder.tvAppstatsData.setText(CommonUtils.getFormatTime(context,data.get(
                 position).getUseTime()));
         return convertView;
     }

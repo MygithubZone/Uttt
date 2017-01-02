@@ -27,8 +27,11 @@ import com.github.mikephil.charting.utils.ColorTemplate;
 import com.rayker.core.base.BaseFragment;
 import com.raythinks.utime.R;
 import com.raythinks.utime.activity.AppStatsActivity;
+import com.raythinks.utime.activity.TrafficStatsActivity;
 import com.raythinks.utime.callable.IMeterialClickCallable;
+import com.raythinks.utime.mirror.db.DBHelper;
 import com.raythinks.utime.mirror.db.DayDBManager;
+import com.raythinks.utime.mirror.utils.CommonUtils;
 import com.raythinks.utime.mirror.utils.TrafficUtils;
 import com.raythinks.utime.mvp.contract.StaticsContract;
 import com.raythinks.utime.mvp.presenter.StaticsPresenterImpl;
@@ -119,11 +122,15 @@ public class StaticsFragment extends BaseFragment implements StaticsContract.Vie
         fllStaticsCall.setOnClickListener(this);
         tvTitleName.setText(R.string.tb_stats);
         CommomUtils.makeMeterial(fllStaticsApp, this);
+        CommomUtils.makeMeterial(fllStaticsTraffic, this);
         initChart();
 
-        long trafficCount[]=DayDBManager.getInstance(getActivity()).findTrafficCount(0);
-        tvStatsTypeTrafficDes1.setText(getResources().getString(R.string.str_statics_send) + TrafficUtils.formatMB(trafficCount[0]));
-        tvStatsTypeTrafficDes2.setText(getResources().getString(R.string.str_statics_recive) + TrafficUtils.formatMB(trafficCount[1]));
+        long trafficCount[] = DayDBManager.getInstance(getActivity()).findTrafficCount(0);
+        tvStatsTypeTrafficDes1.setText(getResources().getString(R.string.str_statics_send) +"  "+ TrafficUtils.formatMB(trafficCount[0]));
+        tvStatsTypeTrafficDes2.setText(getResources().getString(R.string.str_statics_recive)+"  " + TrafficUtils.formatMB(trafficCount[1]));
+        tvStatsTypeAppDes1.setText(getResources().getString(R.string.str_statics_useNum) +"  "+ DayDBManager.getInstance(getContext()).findAppAllCout(DBHelper.DAY_ALLAPP_STATS)+"x");
+        tvStatsTypeAppDes2.setText(getResources().getString(R.string.str_statics_useTime)+"  " + CommonUtils.getFormatTime(getContext(),DayDBManager.getInstance(getContext()).findAppAllTime(DBHelper.DAY_ALLAPP_STATS)));
+
     }
 
     @Override
@@ -268,6 +275,10 @@ public class StaticsFragment extends BaseFragment implements StaticsContract.Vie
             case R.id.fll_statics_app:
                 Intent appStats = new Intent(mActivity, AppStatsActivity.class);
                 startActivity(appStats);
+                break;
+            case R.id.fll_statics_traffic:
+                Intent trafficStats = new Intent(mActivity, TrafficStatsActivity.class);
+                startActivity(trafficStats);
         }
     }
 }

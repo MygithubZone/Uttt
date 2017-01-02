@@ -225,21 +225,21 @@ public class CommonUtils {
      * @param time
      * @return
      */
-    public static String getFormatTime(int time) {
-        int hour = 0;
-        int minute = 0;
+    public static String getFormatTime(Context context,long time) {
+        long hour = 0;
+        long minute = 0;
         StringBuilder result = new StringBuilder();
 
         if (time > 3600) {
             hour = time / 3600;
             time = time % 3600;
-            result.append(hour + "时");
+            result.append(hour + context.getString(R.string.str_unit_hour));
 
             if (time > 60) {
                 minute = time / 60;
                 time = time % 60;
-                result.append(minute + "分");
-                result.append(time + "秒");
+                result.append(minute + context.getString(R.string.str_unit_min));
+                result.append(time + context.getString(R.string.str_count_sec));
             } else {
                 result.append(time + "秒");
             }

@@ -54,6 +54,11 @@
             android:name=".activity.AppStatsActivity"
             android:screenOrientation="portrait"
             android:theme="@style/AppTheme.NoActionBar"></activity>
+        <!--流量统计-->
+        <activity
+            android:name=".activity.TrafficStatsActivity"
+            android:screenOrientation="portrait"
+            android:theme="@style/AppTheme.NoActionBar"></activity>
 
         <service
             android:name=".mirror.service.MirrorService"

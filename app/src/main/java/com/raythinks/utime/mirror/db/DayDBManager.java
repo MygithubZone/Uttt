@@ -11,6 +11,7 @@ import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
 import android.net.TrafficStats;
 import android.text.TextUtils;
+import android.util.Log;
 
 import com.raythinks.utime.mirror.model.AppUseStaticsModel;
 import com.raythinks.utime.mirror.model.TrafficDbModel;
@@ -255,22 +256,21 @@ public class DayDBManager {
      */
     private static void insertTraffcApp(Context mContext, SQLiteDatabase db, AppUseStaticsModel appUseStaticsModel, int netype) {
         if (netype == ConnectivityManager.TYPE_WIFI || netype == ConnectivityManager.TYPE_MOBILE) {//wifi或者mobile记录
-            PackageManager pm = mContext.getPackageManager();
             TrafficDbModel listTraffics = new TrafficDbModel(appUseStaticsModel.getPkgName(), appUseStaticsModel.getIsSysApp(), TrafficStats.getUidRxBytes(appUseStaticsModel.getUid()), TrafficStats.getUidTxBytes(appUseStaticsModel.getUid()), netype, CommonUtils.getNowTime(), CommonUtils.getMondayOFWeek(), CommonUtils.getFirstDayOfMonth());
-            db.execSQL(
-                    "INSERT INTO " + DBHelper.ALL_APP_TRAFFIC_NETCHANGE + "(pkgName,isSysApp,rx,tx,nettype,aTime,weekTime,monthTime)"
-                            + " VALUES(?, ?, ?, ?, ?,?,?,?)",
-                    new Object[]{listTraffics.getPkgName(),
-                            listTraffics.getIsSysApp(),
-                            listTraffics.getRx(),
-                            listTraffics.getTx(),
-                            listTraffics.getNettype(),
-                            listTraffics.getaTime(),
-                            listTraffics.getWeekTime(),
-                            listTraffics.getMonthTime()
-                    });
+            if (listTraffics.getRx() != 0 || listTraffics.getTx() != 0) {
+                ContentValues cv = new ContentValues();
+                cv.put("pkgName", listTraffics.getPkgName());
+                cv.put("isSysApp", listTraffics.getIsSysApp());
+                cv.put("rx", listTraffics.getRx());
+                cv.put("tx", listTraffics.getTx());
+                cv.put("nettype", listTraffics.getNettype());
+                cv.put("aTime", listTraffics.getaTime());
+                cv.put("weekTime", listTraffics.getWeekTime());
+                cv.put("monthTime", listTraffics.getMonthTime());
+                long id = db.insert(DBHelper.ALL_APP_TRAFFIC_NETCHANGE, null, cv);
+                Log.e(TAG, listTraffics.getPkgName() + id + ":" + listTraffics.getRx() + "：" + listTraffics.getTx());
+            }
         }
-
     }
 
     /**
@@ -343,6 +343,38 @@ public class DayDBManager {
     }
 
     /**
+     * 查询所有应用总时长
+     *
+     * @param table
+     * @return
+     */
+    public long findAppAllTime(String table) {
+        String sql = "select sum(useTime) from " + table;
+        Cursor c = db.rawQuery(sql, null);
+        if (c != null)
+            c.moveToFirst();
+        int sum = c.getInt(0);
+        c.close();
+        return sum;
+    }
+
+    /**
+     * 所有app总数
+     *
+     * @param table
+     * @return
+     */
+    public long findAppAllCout(String table) {
+        String sql = "select count(*) from " + table;
+        Cursor c = db.rawQuery(sql, null);
+        if (c != null)
+            c.moveToFirst();
+        int count = c.getInt(0);
+        c.close();
+        return count;
+    }
+
+    /**
      * @param type 0：wifi+mobile;1:wifi;2:mobile
      * @return 数组：0：Tx;1:Rx;
      */
@@ -352,8 +384,9 @@ public class DayDBManager {
         trafficCount[0] = 0;
         trafficCount[1] = 0;
         for (int i = 0; i < list.size(); i++) {
-            trafficCount[0] = trafficCount[0] + ((type == 0 || type == 1) ? list.get(i).getMobileTx() : 0) + ((type == 0 || type == 2) ? list.get(i).getWifiTx() : 0);
-            trafficCount[1] = trafficCount[1] + ((type == 0 || type == 1) ? list.get(i).getMobileRx() : 0) + ((type == 0 || type == 2) ? list.get(i).getWifiRx() : 0);
+
+            trafficCount[0] = trafficCount[0] + ((type == 0 || type == 2) ? list.get(i).getMobileTx() : 0) + ((type == 0 || type == 1) ? list.get(i).getWifiTx() : 0);
+            trafficCount[1] = trafficCount[1] + ((type == 0 || type == 2) ? list.get(i).getMobileRx() : 0) + ((type == 0 || type == 1) ? list.get(i).getWifiRx() : 0);
         }
         return trafficCount;
     }
@@ -372,7 +405,7 @@ public class DayDBManager {
         } else if (type == 3) {
             key = "monthTime";
         }
-        String sql = "SELECT * FROM " + DBHelper.ALL_APP_TRAFFIC_NETCHANGE + " where "+key+"=" + today;
+        String sql = "SELECT * FROM " + DBHelper.ALL_APP_TRAFFIC_NETCHANGE + " where " + key + " = '" + today + "'";
         Cursor c = db.rawQuery(sql, null);
         List<AppUseStaticsModel> list = new ArrayList<>();
         List<TrafficDbModel> trafficList = new ArrayList<>();
@@ -388,13 +421,16 @@ public class DayDBManager {
             info.setWeekTime(c.getString(c.getColumnIndex("weekTime")));
             info.setWeekTime(c.getString(c.getColumnIndex("monthTime")));
             trafficList.add(info);
+            Log.e(TAG, info.getPkgName()+ ":" +info.getTx()+":"+info.getRx());
         }
         c.close();
         int size = trafficList.size();
+
         for (int i = 0; i < size; i++) {
-            AppUseStaticsModel appFromPkgName = AppInfoProviderUtils.getAppFromPkgName(mContext, trafficList.get(i).getPkgName());
+            AppUseStaticsModel appFromPkgName = null;
             int index = list.indexOf(appFromPkgName);
             if (index == -1) {
+                appFromPkgName=  AppInfoProviderUtils.getAppFromPkgName(mContext, trafficList.get(i).getPkgName());
                 list.add(appFromPkgName);
             } else {
                 appFromPkgName = list.get(index);
@@ -417,6 +453,7 @@ public class DayDBManager {
                     appFromPkgName.setMobileTx((appFromPkgName.getMobileTx() + TrafficStats.getUidTxBytes(appFromPkgName.getUid()) - trafficList.get(i).getTx()));
                 }
             }
+            Log.e(TAG+"aaaa", appFromPkgName.getPkgName()+ ":" +appFromPkgName.getWifiRx()+":"+appFromPkgName.getWifiTx());
         }
         return list;
     }
